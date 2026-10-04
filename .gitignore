@@ -1,0 +1,10 @@
+# Dependencies (dev-only test harness; not part of the static demo)
+node_modules/
+
+# Test artifacts / verification screenshots
+test-shop-*.png
+shot-*.png
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db

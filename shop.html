@@ -58,30 +58,42 @@
 
   <main id="main">
 
-    <!-- ================= PAGE HERO ================= -->
+    <!-- ================= SHOP HERO ================= -->
+    <!--
+      HERO IMAGE:
+      Put the shop banner at   assets/shop-hero.jpg
+      Recommended: a dark, cinematic gym / athlete photo with empty space on
+      the left for the text. 1920x760 or larger.
+      Until the photo exists the dark gradient keeps the banner readable.
+    -->
     <section class="shop-hero">
       <div class="container shop-hero__inner">
 
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a>
-          <span class="sep" aria-hidden="true">/</span>
-          <span aria-current="page">Shop</span>
-        </nav>
+        <div class="shop-hero__copy">
+          <p class="eyebrow">Shop Our Products</p>
 
-        <h1>Shop <span>All Products</span></h1>
+          <h1>
+            Premium Nutrition<br />
+            <span>Supplements</span>
+          </h1>
 
-        <p>
-          Browse the full nutrition range. Filter by category and price to find
-          what suits your routine.
-        </p>
+          <p class="shop-hero__lead">
+            Top quality products for your fitness journey.
+          </p>
 
-        <div class="shop-search">
-          <svg class="shop-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
-          </svg>
-          <label class="sr-only" for="shopSearch">Search products</label>
-          <input type="search" id="shopSearch" placeholder="Search products…" autocomplete="off" />
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <span aria-current="page">Shop</span>
+          </nav>
         </div>
+
+        <p class="shop-hero__accent" aria-hidden="true">
+          <span>Better</span>
+          <em>Fuel</em>
+          <span>Bigger</span>
+          <em>Goals</em>
+        </p>
 
       </div>
     </section>
@@ -106,8 +118,29 @@
           <form id="filterForm" novalidate>
 
             <fieldset class="filter-group">
-              <legend class="filter-group__title">Category</legend>
+              <legend class="filter-group__title">Categories</legend>
               <div class="filter-list" data-filter-group="category"></div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Price Range</legend>
+
+              <div class="price-range">
+                <div class="price-range__track" aria-hidden="true">
+                  <span class="price-range__fill" data-price-fill></span>
+                </div>
+
+                <input class="price-range__input" type="range" id="priceMin" name="priceMin"
+                       min="0" max="5000" step="100" value="0" aria-label="Minimum price" />
+
+                <input class="price-range__input" type="range" id="priceMax" name="priceMax"
+                       min="0" max="5000" step="100" value="5000" aria-label="Maximum price" />
+              </div>
+
+              <div class="price-range__values">
+                <span data-price-min>&#8377;0</span>
+                <span data-price-max>&#8377;5,000+</span>
+              </div>
             </fieldset>
 
             <fieldset class="filter-group">
@@ -116,23 +149,156 @@
             </fieldset>
 
             <fieldset class="filter-group">
-              <legend class="filter-group__title">Price</legend>
-              <div class="filter-list" data-filter-group="price"></div>
+              <legend class="filter-group__title">Brand</legend>
+              <div class="filter-list" data-filter-group="brand"></div>
             </fieldset>
 
-            <button class="filter-reset" type="button" data-reset-filters>Clear all filters</button>
+            <button class="filter-reset" type="button" data-reset-filters>Clear Filters</button>
+
           </form>
 
         </aside>
 
         <div class="drawer-backdrop" data-close-filters></div>
 
-        <!-- __BODY2__ -->
+        <!-- ---------- RESULTS ---------- -->
+        <div class="shop-results">
+
+          <div class="shop-head">
+            <div class="shop-head__titles">
+              <h2>All Products</h2>
+              <p>Browse our complete range of supplements.</p>
+            </div>
+
+            <div class="shop-head__actions">
+
+              <div class="shop-search">
+                <svg class="shop-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+                </svg>
+                <label class="sr-only" for="shopSearch">Search products</label>
+                <input type="search" id="shopSearch" placeholder="Search products&hellip;" autocomplete="off" />
+              </div>
+
+              <div class="shop-sort">
+                <label for="shopSort">Sort By</label>
+                <select id="shopSort">
+                  <option value="popularity">Popularity</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="newest">Newest</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="shop-bar">
+            <p class="shop-count" data-result-count aria-live="polite">Loading products&hellip;</p>
+
+            <button class="filter-toggle" type="button" data-open-filters aria-expanded="false" aria-controls="shopFilters">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M3 6h18M6 12h12M10 18h4" />
+              </svg>
+              Filters
+              <span class="filter-toggle__badge" data-filter-badge>0</span>
+            </button>
+          </div>
+
+          <div class="shop-grid" id="shopGrid"></div>
+
+          <div class="shop-empty" id="shopEmpty">
+            <h3>No products found</h3>
+            <p>No products match your current filters. Try clearing them to see the full range.</p>
+            <button class="btn btn-primary" type="button" data-reset-filters>Clear all filters</button>
+          </div>
+
+          <nav class="shop-pagination" id="shopPagination" aria-label="Product pages"></nav>
+
+        </div>
 
       </div>
     </div>
 
+
+    <!-- ================= DELIVERY / TRUST STRIP ================= -->
+    <section class="delivery-strip shop-trust">
+      <div class="container">
+        <div class="delivery-grid">
+
+          <div class="delivery-card shop-trust__card">
+            <div class="delivery-icon" aria-hidden="true">&#8377;</div>
+            <div>
+              <strong>Cash on Delivery Available</strong>
+              <span>Pay when you receive your order.</span>
+            </div>
+          </div>
+
+          <div class="delivery-card shop-trust__card">
+            <div class="delivery-icon" aria-hidden="true">&#128666;</div>
+            <div>
+              <strong>All India Delivery</strong>
+              <span>Delivery availability can be shown during checkout.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
+
+
+  <!-- ================= FOOTER (same as homepage) ================= -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a class="logo" href="index.html">
+          <div class="logo-mark">SB</div>
+          SPEED <span>BOOST</span> NUTRITION
+        </a>
+
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram">IG</a>
+          <a class="social" href="#" aria-label="YouTube">YT</a>
+          <a class="social" href="#" aria-label="Facebook">FB</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Speed Boost Nutrition. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================= CART TOAST ================= -->
+  <div class="shop-toast" id="shopToast" role="status" aria-live="polite">
+    <span class="shop-toast__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m5 13 4 4L19 7" />
+      </svg>
+    </span>
+    <span data-toast-text>Added to cart</span>
+  </div>
+
+
+  <script src="js/shop.js"></script>
 
 </body>
 </html>
+
+
+

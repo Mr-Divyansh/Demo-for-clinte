@@ -640,12 +640,18 @@
       .why-grid,.store-grid{grid-template-columns:1fr}
       .why-list{grid-template-columns:1fr}
       .insta-grid{grid-template-columns:repeat(4,1fr)}
+      /* Prevent the logo + links + socials row from overflowing before 600px */
+      .footer-top{flex-wrap:wrap}
+      .socials{flex:none}
     }
 
     @media(max-width:600px){
       .container{width:min(var(--container),calc(100% - 24px))}
-      .nav{height:64px}
+      .nav{height:64px;gap:12px}
       .login-btn{display:none}
+      /* The wordmark is nowrap, so scale it down to stop small-screen overflow */
+      .logo{font-size:14px;gap:7px}
+      .logo-mark{width:30px;height:30px;font-size:11px}
       .hero,.hero-content{min-height:650px}
       .hero h1{font-size:48px;letter-spacing:-2.5px}
       .hero-copy p{font-size:15px}

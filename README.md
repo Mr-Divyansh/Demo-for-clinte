@@ -153,10 +153,36 @@ Client Feedback
 Production
 ```
 
+## Running the demo
+
+There is no build step and no runtime dependency — the site is plain HTML/CSS/JS.
+
+```text
+Open index.html  → Home page
+Open shop.html   → Shop page
+```
+
+A smoke test for the shop page is included (dev-only, uses the Chrome already
+installed on the machine):
+
+```bash
+npm install     # installs puppeteer-core (dev only)
+npm test        # renders shop.html in headless Chrome and runs 65 checks
+```
+
 ## Status
 
-**Current stage:** Product definition / MVP planning
+**Current stage:** Customer storefront — static demo
+
+Built so far:
+
+- `index.html` — Home page
+- `shop.html` — Shop page (filters, price range, sorting, pagination, mobile filter drawer)
+- `css/style.css` — shared design system (tokens, header, cards, footer)
+- `css/shop.css` — shop-only layout
+- `js/shop.js` — sample catalogue + client-side filtering (no backend)
 
 Next:
 
-**UI/UX Design → Technical implementation**
+**Cart → Checkout → Order flow, then the Admin Dashboard.**
+

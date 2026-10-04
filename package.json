@@ -1,0 +1,12 @@
+{
+  "name": "speed-boost-nutrition-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static client demo for Speed Boost Nutrition (index.html + shop.html). No runtime dependencies; Puppeteer is used only for the shop-page smoke test.",
+  "scripts": {
+    "test": "node test-shop.js"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

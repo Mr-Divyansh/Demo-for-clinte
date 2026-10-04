@@ -1,0 +1,374 @@
+/* ==========================================================================
+   ABOUT PAGE
+   Loaded AFTER css/style.css + css/components.css, so the tokens, buttons,
+   header/footer, inner-page banner and breadcrumb are reused as-is. Only the
+   About-specific sections live here.
+   ========================================================================== */
+
+/* style.css styles .eyebrow for dark backgrounds — these sections are white */
+.about-story .eyebrow,
+.about-offer .eyebrow,
+.about-store .eyebrow{color:#717980}
+
+/* The header search is a link here (this page has no product list to filter) */
+a.icon-btn{display:grid;place-items:center;text-decoration:none}
+
+/* Dark outline button for use on the light "What We Offer" cards */
+.btn-outline-dark{
+  border-color:var(--border);
+  color:var(--text);
+  background:#fff;
+}
+.btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ==========================================================================
+   OUR STORY — two-column
+   ========================================================================== */
+.about-story{padding:70px 0}
+
+.about-story__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:44px;
+  align-items:center;
+}
+
+.about-story__media{
+  height:440px;
+  border-radius:16px;
+  overflow:hidden;
+  background:linear-gradient(140deg,#e9eef3 0%,#dde4ea 100%);
+  border:1px solid var(--border);
+}
+
+.about-story__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.about-story__copy h2{
+  font-size:clamp(24px,3.2vw,34px);
+  letter-spacing:-1.3px;
+  margin:12px 0 16px;
+}
+
+.about-story__copy h2 span{color:var(--blue)}
+
+.about-story__copy p{
+  color:var(--muted);
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.about-story__copy p:last-child{margin-bottom:0}
+
+/* ==========================================================================
+   WHAT WE OFFER — four feature cards
+   ========================================================================== */
+.about-offer{
+  background:#fafbfc;
+  padding:66px 0 72px;
+}
+
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.offer-card{
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.offer-card:hover{
+  transform:translateY(-4px);
+  border-color:#bcd8fb;
+  box-shadow:0 16px 36px rgba(15,23,42,.08);
+}
+
+.offer-card__media{
+  height:104px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(140deg,#0e141b 0%,#080d12 100%);
+  border-bottom:1px solid var(--border);
+}
+
+.offer-card__icon{
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:rgba(22,140,255,.14);
+  color:var(--blue);
+}
+
+.offer-card__icon svg{width:28px;height:28px}
+
+.offer-card__body{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:8px;
+  padding:18px 20px 22px;
+  flex:1;
+}
+
+.offer-card__body h3{font-size:16px}
+
+.offer-card__body p{
+  color:var(--muted);
+  font-size:13.5px;
+  flex:1;
+}
+
+/* ==========================================================================
+   WHY SPEED BOOST — premium dark section
+   ========================================================================== */
+.about-why{
+  background:#080d12;
+  color:#fff;
+  padding:72px 0 78px;
+}
+
+.about-why .eyebrow{color:#9fc9ff}
+
+.about-why__head{
+  max-width:640px;
+  margin-bottom:38px;
+}
+
+.about-why__head h2{
+  font-size:clamp(26px,3.6vw,38px);
+  letter-spacing:-1.6px;
+  text-transform:uppercase;
+  line-height:1.05;
+}
+
+.about-why__head h2 span{color:var(--blue)}
+
+.about-why__lead{
+  color:#c3ccd4;
+  font-size:15px;
+  margin-top:14px;
+}
+
+.about-why__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.why-card{
+  padding:26px 22px 28px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.1);
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+
+.why-card:hover{
+  border-color:rgba(22,140,255,.55);
+  background:rgba(255,255,255,.075);
+  transform:translateY(-3px);
+}
+
+.why-card__icon{
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  margin-bottom:16px;
+  background:rgba(22,140,255,.16);
+  color:var(--blue);
+}
+
+.why-card__icon svg{width:24px;height:24px}
+
+.why-card h3{
+  font-size:15.5px;
+  margin-bottom:8px;
+}
+
+.why-card p{
+  color:#b9c3cb;
+  font-size:13.5px;
+}
+
+
+/* ==========================================================================
+   PHYSICAL STORE
+   ========================================================================== */
+.about-store{padding:70px 0}
+
+.about-store__grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:44px;
+  align-items:center;
+}
+
+.about-store__copy h2{
+  font-size:clamp(24px,3.2vw,34px);
+  letter-spacing:-1.3px;
+  margin:12px 0 16px;
+}
+
+.about-store__copy h2 span{color:var(--blue)}
+
+.about-store__copy > p{
+  color:var(--muted);
+  font-size:15px;
+  margin-bottom:18px;
+}
+
+.about-store__list{
+  display:grid;
+  gap:10px;
+  list-style:none;
+  margin:0 0 22px;
+}
+
+.about-store__list li{
+  position:relative;
+  padding-left:28px;
+  font-size:14px;
+  color:#414c56;
+}
+
+.about-store__list li::before{
+  content:"\2713";
+  position:absolute;
+  left:0;
+  top:1px;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(22,140,255,.13);
+  color:#087ce2;
+  font-size:10.5px;
+  font-weight:900;
+}
+
+.about-store__meta{
+  margin-bottom:22px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
+
+.about-store__location{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.about-store__location svg{
+  width:19px;
+  height:19px;
+  color:var(--blue);
+  flex:none;
+}
+
+.about-store__media{
+  height:420px;
+  border-radius:16px;
+  overflow:hidden;
+  background:linear-gradient(140deg,#e9eef3 0%,#dde4ea 100%);
+  border:1px solid var(--border);
+}
+
+.about-store__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.about-cta{
+  background:#0e141b;
+  color:#fff;
+  padding:74px 0 80px;
+  text-align:center;
+}
+
+.about-cta__inner{max-width:680px}
+
+.about-cta h2{
+  font-size:clamp(26px,3.8vw,42px);
+  letter-spacing:-1.8px;
+  text-transform:uppercase;
+  line-height:1.04;
+}
+
+.about-cta h2 span{color:var(--blue)}
+
+.about-cta p{
+  color:#c3ccd4;
+  font-size:15.5px;
+  margin:16px auto 30px;
+  max-width:520px;
+}
+
+.about-cta__actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   rules.md 8 — verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375
+   ========================================================================== */
+@media(max-width:1024px){
+  .about-story__grid,
+  .about-store__grid{grid-template-columns:1fr;gap:28px}
+  .about-story__media{height:340px}
+  .about-store__media{height:340px}
+  .offer-grid,
+  .about-why__grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:768px){
+  .offer-grid,
+  .about-why__grid{gap:12px}
+}
+
+@media(max-width:600px){
+  .about-story{padding:46px 0}
+  .about-story__media{height:230px}
+  .about-story__copy p{font-size:14px}
+
+  .about-offer{padding:46px 0 52px}
+  .offer-grid,
+  .about-why__grid{grid-template-columns:1fr}
+  .offer-card__media{height:88px}
+  .offer-card__body{padding:16px 18px 20px}
+
+  .about-why{padding:48px 0 54px}
+  .about-why__head{margin-bottom:28px}
+  .why-card{padding:22px 20px 24px}
+
+  .about-store{padding:46px 0}
+  .about-store__media{height:230px}
+
+  .about-cta{padding:52px 0 58px}
+  .about-cta p{font-size:14.5px;margin-bottom:26px}
+  .about-cta__actions{flex-direction:column;align-items:stretch}
+  .about-cta__actions .btn{width:100%}
+}

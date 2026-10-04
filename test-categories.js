@@ -196,14 +196,17 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
       lang: document.documentElement.lang,
       main: document.querySelectorAll('main#main').length,
       skip: !!document.querySelector('.skip-link'),
-      current: document.querySelectorAll('[aria-current="page"]').length
+      // One in the nav + one in the breadcrumb = 2. Both are correct usage.
+      navCurrent: document.querySelectorAll('.nav-links [aria-current="page"]').length,
+      crumbCurrent: document.querySelectorAll('.breadcrumb [aria-current="page"]').length
     };
   });
   check('all images declare an alt attribute', a11y.imgNoAlt === 0, `${a11y.imgNoAlt} missing`);
   check('all links/buttons have an accessible name', a11y.nameless.length === 0, a11y.nameless.join(' | '));
   check('heading levels never skip a level', a11y.jump === null, String(a11y.jump));
-  check('page has lang, main#main, skip link and one aria-current',
-    a11y.lang === 'en' && a11y.main === 1 && a11y.skip && a11y.current === 1, JSON.stringify(a11y));
+  check('page has lang, main#main, skip link and nav + breadcrumb aria-current',
+    a11y.lang === 'en' && a11y.main === 1 && a11y.skip &&
+    a11y.navCurrent === 1 && a11y.crumbCurrent === 1, JSON.stringify(a11y));
 
   // ---- 10. No horizontal overflow (rules.md 8) ----
   for (const w of [1440, 1280, 1024, 768, 640, 390, 375]) {
@@ -261,13 +264,17 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(300);
   await page.click('.cat-card');
   await wait(600);
+  // The Shop results heading is statically "All Products" per the shop spec, so
+  // verify the deep link by the checked facet and the filtered result count.
   const landed = await page.evaluate(() => ({
     url: location.href,
-    heading: (document.querySelector('.shop-head__titles h2') || {}).textContent || ''
+    checked: (document.querySelector('input[name="category"][value="protein"]') || {}).checked,
+    cards: document.querySelectorAll('#shopGrid .product-card').length
   }));
   check('clicking a category card opens the filtered Shop page',
-    /shop\.html\?category=protein$/.test(landed.url) && landed.heading.trim() === 'Protein',
-    `${landed.url.split('/').pop()} -> "${landed.heading.trim()}"`);
+    /shop\.html\?category=protein$/.test(landed.url) &&
+    landed.checked === true && landed.cards === 3,
+    `${landed.url.split('/').pop()} checked=${landed.checked} cards=${landed.cards}`);
 
   // ---- 14. Screenshots ----
   await page.setViewport({ width: 1440, height: 1100 });

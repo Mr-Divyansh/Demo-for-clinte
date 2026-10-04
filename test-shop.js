@@ -373,8 +373,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(500);
   await page.screenshot({ path: 'test-shop-mobile.png' });
 
-  // Only script errors matter — missing assets/*.jpg are expected until real
-// product photography is supplied (the onerror fallback handles them).
+  // Only script errors matter; missing assets/*.jpg are expected until real
+  // product photography is supplied (the onerror fallback handles them).
   const realErrors = errors.filter(e => !e.includes('ERR_FILE_NOT_FOUND'));
   check('no JS/script errors', realErrors.length === 0, realErrors.join(' | '));
 

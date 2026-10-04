@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Speed Boost Nutrition</title>
+  <meta name="description" content="Admin dashboard UI for Speed Boost Nutrition. Sales, orders, products and customer overview." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Shared design system, shared inner-page components, then admin-only styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+
+</head>
+
+<body class="admin-body">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!--
+    ADMIN DASHBOARD - UI ONLY
+    ------------------------------------------------------------------
+    No backend, no database, no authentication and no API calls are
+    implemented here. Every figure, order and product on this page is
+    SAMPLE DATA loaded from js/admin-data.js, exactly as phases.md
+    requires ("Use clearly marked demo/sample data", rule 15).
+
+    Statuses match architecture.md sections 6 and 7:
+      Order:    PENDING / CONFIRMED / PROCESSING / SHIPPED / DELIVERED / CANCELLED
+      Payment:  COD / PAID / PENDING / FAILED / REFUNDED
+    Cancelled orders are excluded from sales totals (architecture.md 11).
+  -->
+
+  <div class="admin-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <a class="admin-logo" href="index.html">
+          <span class="admin-logo__mark" aria-hidden="true">SB</span>
+          <span class="admin-logo__text">
+            SPEED <span>BOOST</span><br />
+            <small>Admin Panel</small>
+          </span>
+        </a>
+
+        <button class="sidebar__close" type="button" id="sidebarClose" aria-label="Close navigation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Admin">
+        <p class="sidebar__label">Menu</p>
+
+        <ul class="sidebar__list">
+          <li>
+            <a class="sidebar__link is-active" href="admin.html" aria-current="page">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="7" height="7" rx="1.6" />
+                <rect x="13.5" y="3.5" width="7" height="7" rx="1.6" />
+                <rect x="3.5" y="13.5" width="7" height="7" rx="1.6" />
+                <rect x="13.5" y="13.5" width="7" height="7" rx="1.6" />
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 7.5 12 3.5l8 4v9L12 20.5l-8-4z" />
+                <path d="M4 7.5 12 11.5l8-4M12 11.5v9" />
+              </svg>
+              <span>Orders</span>
+              <span class="sidebar__badge">23</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 9h16l-1.3 9.1a2 2 0 0 1-2 1.9H7.3a2 2 0 0 1-2-1.9z" />
+                <path d="M9 9V6.4a3 3 0 0 1 6 0V9" />
+              </svg>
+              <span>Products</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="8" r="3.2" />
+                <path d="M3.5 19.5a5.5 5.5 0 0 1 11 0" />
+                <path d="M16 5.3a3.2 3.2 0 0 1 0 5.4M17 14.6a5.5 5.5 0 0 1 3.5 4.9" />
+              </svg>
+              <span>Customers</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19V5M4 19h16" />
+                <path d="m7 15 3.5-4 3 2.5L20 7" />
+              </svg>
+              <span>Sales</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 15.5V10a6 6 0 1 0-12 0v5.5L4.5 18h15z" />
+                <path d="M10 21h4" />
+              </svg>
+              <span>Notifications</span>
+              <span class="sidebar__badge sidebar__badge--alert">3</span>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="sidebar__list">
+          <li>
+            <a class="sidebar__link" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 14.5a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H2.7a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V2.7a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.6 1z" />
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="sidebar__label sidebar__label--foot">Account</p>
+
+        <ul class="sidebar__list">
+          <li>
+            <a class="sidebar__link sidebar__link--danger" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7" />
+                <path d="M17.5 8.5 21 12l-3.5 3.5M21 12h-11" />
+              </svg>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar__foot">
+        <p class="sidebar__demo">Demo data &mdash; not live business data</p>
+      </div>
+    </aside>
+
+    <!-- Overlay behind the drawer on tablet/mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+    <!-- ================= MAIN COLUMN ================= -->
+    <div class="admin-main">
+
+      <!-- ================= TOP HEADER ================= -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu" type="button" id="sidebarToggle"
+                  aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="topbar__titles">
+            <h1 class="topbar__title">Dashboard</h1>
+            <p class="topbar__subtitle">Overview of your store performance</p>
+          </div>
+        </div>
+
+        <div class="topbar__right">
+          <form class="topbar__search" role="search" id="adminSearch">
+            <label class="sr-only" for="adminSearchInput">Search orders or products</label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+            </svg>
+            <input type="search" id="adminSearchInput" placeholder="Search orders, products" autocomplete="off" />
+          </form>
+
+          <button class="topbar__icon" type="button" id="notificationBtn" aria-label="Notifications, 3 unread">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 15.5V10a6 6 0 1 0-12 0v5.5L4.5 18h15z" />
+              <path d="M10 21h4" />
+            </svg>
+            <span class="topbar__dot" aria-hidden="true">3</span>
+          </button>
+
+          <div class="topbar__profile">
+            <span class="avatar" aria-hidden="true">RA</span>
+            <span class="topbar__profile-text">
+              <strong>Rahul Anand</strong>
+              <small>Store Owner</small>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content" id="main">
+<!-- Demo-data notice: phases.md rule 15 requires sample data to be clearly
+             identifiable, so the owner never mistakes it for real figures. -->
+        <p class="demo-note">
+          <strong>Demo dashboard.</strong>
+          All figures, orders and customers below are sample data for layout
+          review only &mdash; they are not real business data.
+        </p>
+
+        <!-- ================= KPI CARDS ================= -->
+        <!-- Priority order from design.md 13: what sold, how much, how many,
+             what needs attention. Pending Orders is the actionable one. -->
+        <section class="kpi-grid" aria-label="Key performance indicators">
+
+          <article class="kpi-card">
+            <div class="kpi-card__top">
+              <span class="kpi-card__label">Total Sales</span>
+              <span class="kpi-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 5.5 10 9l3-4.5 4 5.5" />
+                  <path d="M4 13.5h16v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-card__value" data-kpi="sales">&mdash;</p>
+            <p class="kpi-card__meta">
+              <span class="trend trend--up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 19V5M6 11l6-6 6 6" />
+                </svg>
+                <span data-kpi="sales-change">12.4%</span>
+              </span>
+              <span class="kpi-card__period">vs last month</span>
+            </p>
+          </article>
+
+          <article class="kpi-card">
+            <div class="kpi-card__top">
+              <span class="kpi-card__label">Total Orders</span>
+              <span class="kpi-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 7.5 12 3.5l8 4v9L12 20.5l-8-4z" />
+                  <path d="M4 7.5 12 11.5l8-4M12 11.5v9" />
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-card__value" data-kpi="orders">&mdash;</p>
+            <p class="kpi-card__meta">
+              <span class="trend trend--up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 19V5M6 11l6-6 6 6" />
+                </svg>
+                <span data-kpi="orders-change">8.1%</span>
+              </span>
+              <span class="kpi-card__period">vs last month</span>
+            </p>
+          </article>
+
+          <article class="kpi-card kpi-card--alert">
+            <div class="kpi-card__top">
+              <span class="kpi-card__label">Pending Orders</span>
+              <span class="kpi-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5V12l3 2" />
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-card__value" data-kpi="pending">&mdash;</p>
+            <p class="kpi-card__meta">
+              <span class="trend trend--alert">Needs action</span>
+              <span class="kpi-card__period">awaiting confirmation</span>
+            </p>
+          </article>
+
+          <article class="kpi-card">
+            <div class="kpi-card__top">
+              <span class="kpi-card__label">Customers</span>
+              <span class="kpi-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="8" r="3.2" />
+                  <path d="M3.5 19.5a5.5 5.5 0 0 1 11 0" />
+                  <path d="M16 5.3a3.2 3.2 0 0 1 0 5.4M17 14.6a5.5 5.5 0 0 1 3.5 4.9" />
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-card__value" data-kpi="customers">&mdash;</p>
+            <p class="kpi-card__meta">
+              <span class="trend trend--up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 19V5M6 11l6-6 6 6" />
+                </svg>
+                <span data-kpi="customers-change">6.3%</span>
+              </span>
+              <span class="kpi-card__period">vs last month</span>
+            </p>
+          </article>
+
+        </section>
+<!-- ================= SALES OVERVIEW ================= -->
+        <section class="panel panel--chart" aria-labelledby="salesHeading">
+          <div class="panel__head">
+            <div>
+              <h2 class="panel__title" id="salesHeading">Sales Overview</h2>
+              <p class="panel__sub" id="salesRangeLabel">This month</p>
+            </div>
+
+            <!-- Time filters. aria-pressed marks the active range (rules.md 9). -->
+            <div class="segmented" role="group" aria-label="Sales time range">
+              <button class="segmented__btn" type="button" data-range="today" aria-pressed="false">Today</button>
+              <button class="segmented__btn" type="button" data-range="7d" aria-pressed="false">7 Days</button>
+              <button class="segmented__btn" type="button" data-range="30d" aria-pressed="false">30 Days</button>
+              <button class="segmented__btn is-active" type="button" data-range="month" aria-pressed="true">This Month</button>
+            </div>
+          </div>
+
+          <!-- Sales summary, above the chart so the number reads first -->
+          <div class="chart-summary">
+            <div>
+              <p class="chart-summary__label">Total sales</p>
+              <p class="chart-summary__value" data-chart="total">&mdash;</p>
+            </div>
+            <div class="chart-summary__stats">
+              <span class="trend trend--up" data-chart="trend">&mdash;</span>
+              <span class="chart-summary__meta">orders in range</span>
+              <strong class="chart-summary__orders" data-chart="orders">&mdash;</strong>
+            </div>
+          </div>
+
+          <!-- Chart is drawn by js/admin.js into this container (plain SVG,
+               no chart library: rules.md 10 says do not add dependencies). -->
+          <div class="chart" id="salesChart" role="img" aria-label="Sales trend chart"></div>
+
+          <p class="chart__legend">
+            <span class="chart__legend-key" aria-hidden="true"></span>
+            Daily sales (&#8377;)
+          </p>
+        </section>
+
+        <!-- ================= ORDER STATUS OVERVIEW ================= -->
+        <!-- Status names and the six stages come from architecture.md section 6. -->
+        <section class="panel panel--status" aria-labelledby="statusHeading">
+          <div class="panel__head">
+            <div>
+              <h2 class="panel__title" id="statusHeading">Order Status Overview</h2>
+              <p class="panel__sub">All orders by current status</p>
+            </div>
+          </div>
+
+          <div class="status-grid" id="statusGrid" role="list">
+            <!-- Populated from js/admin-data.js -->
+          </div>
+
+          <!-- Proportional bar: how the six stages relate at a glance -->
+          <div class="status-bar" id="statusBar" role="img" aria-label="Order status distribution bar"></div>
+
+          <ul class="status-legend" id="statusLegend"></ul>
+        </section>
+<!-- ================= RECENT ORDERS ================= -->
+        <section class="panel panel--orders" aria-labelledby="ordersHeading">
+          <div class="panel__head">
+            <div>
+              <h2 class="panel__title" id="ordersHeading">Recent Orders</h2>
+              <p class="panel__sub">Latest orders placed in the store</p>
+            </div>
+            <a class="panel__action" href="#" aria-disabled="true">View all orders &rarr;</a>
+          </div>
+
+          <!-- .table-scroll keeps the table readable on small screens instead
+               of squashing columns (design.md 16, admin is desktop-first but
+               must still work at 390px). -->
+          <div class="table-scroll">
+            <table class="orders-table">
+              <caption class="sr-only">Recent demo orders with customer, products, amount, payment, date and status</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Products</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Payment</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="ordersBody">
+                <!-- Populated from js/admin-data.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Empty state (design.md 15) -->
+          <div class="empty-state" id="ordersEmpty" hidden>
+            <p class="empty-state__title">No orders yet</p>
+            <p class="empty-state__text">New orders will appear here as customers check out.</p>
+          </div>
+        </section>
+<!-- ================= TOP SELLING PRODUCTS ================= -->
+        <section class="panel panel--products" aria-labelledby="topProductsHeading">
+          <div class="panel__head">
+            <div>
+              <h2 class="panel__title" id="topProductsHeading">Top Selling Products</h2>
+              <p class="panel__sub">By units sold this month</p>
+            </div>
+          </div>
+
+          <ol class="product-list" id="topProductsList">
+            <!-- Populated from js/admin-data.js -->
+          </ol>
+
+          <div class="empty-state" id="productsEmpty" hidden>
+            <p class="empty-state__title">No sales yet</p>
+            <p class="empty-state__text">Best sellers will be listed once orders are delivered.</p>
+          </div>
+        </section>
+
+        <!-- ================= ATTENTION / NOTIFICATIONS ================= -->
+        <section class="panel panel--attention" aria-labelledby="attentionHeading">
+          <div class="panel__head">
+            <div>
+              <h2 class="panel__title" id="attentionHeading">Needs Attention</h2>
+              <p class="panel__sub">Actions waiting on you</p>
+            </div>
+          </div>
+
+          <ul class="alert-list" id="alertList">
+            <!-- Populated from js/admin-data.js -->
+          </ul>
+
+          <div class="empty-state" id="alertsEmpty" hidden>
+            <p class="empty-state__title">Nothing pending</p>
+            <p class="empty-state__text">You are all caught up right now.</p>
+          </div>
+        </section>
+<!-- ================= FOOTER ================= -->
+        <footer class="admin-foot">
+          <p>
+            Speed Boost Nutrition Admin &mdash; demo interface. No live data is
+            connected.
+          </p>
+          <p class="admin-foot__note">
+            Statuses follow architecture.md; sales totals exclude cancelled orders.
+          </p>
+        </footer>
+
+      </main>
+    </div><!-- /.admin-main -->
+  </div><!-- /.admin-shell -->
+
+  <script src="js/admin-data.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

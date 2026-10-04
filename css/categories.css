@@ -145,7 +145,8 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 .cat-feature__list{
   display:grid;
   gap:11px;
-  margin-bottom:28px;
+  list-style:none;
+  margin:0 0 28px;
 }
 
 .cat-feature__list li{

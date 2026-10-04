@@ -158,16 +158,23 @@ Production
 There is no build step and no runtime dependency — the site is plain HTML/CSS/JS.
 
 ```text
-Open index.html  → Home page
-Open shop.html   → Shop page
+Open index.html       → Home page
+Open shop.html        → Shop page
+Open categories.html  → Categories page
+Open about.html       → About page
+Open contact.html     → Contact page
 ```
 
-A smoke test for the shop page is included (dev-only, uses the Chrome already
-installed on the machine):
+Smoke tests are included (dev-only, they drive the Chrome already installed on
+the machine):
 
 ```bash
-npm install     # installs puppeteer-core (dev only)
-npm test        # renders shop.html in headless Chrome and runs 65 checks
+npm install            # installs puppeteer-core (dev only)
+npm test               # all suites — 273 checks
+npm run test:shop      # shop.html only — 65 checks
+npm run test:categories # categories.html only — 54 checks
+npm run test:about     # about.html only — 72 checks
+npm run test:contact   # contact.html only — 82 checks
 ```
 
 ## Status
@@ -178,9 +185,37 @@ Built so far:
 
 - `index.html` — Home page
 - `shop.html` — Shop page (filters, price range, sorting, pagination, mobile filter drawer)
+- `categories.html` — Categories page (8 category cards, featured block, popular categories, deep links into Shop)
+- `about.html` — About page (hero, our story, 4 offer cards, dark "Why Speed Boost" section, physical store, CTA)
+- `contact.html` — Contact page (hero, 4 contact cards, demo contact form, store location, FAQ, CTA)
 - `css/style.css` — shared design system (tokens, header, cards, footer)
+- `css/components.css` — shared inner-page components (page banner, breadcrumb, dark trust strip, a11y helpers)
 - `css/shop.css` — shop-only layout
+- `css/categories.css` — categories-only layout
+- `css/about.css` — about-only layout
+- `css/contact.css` — contact-only layout (including the first form styles on the site)
 - `js/shop.js` — sample catalogue + client-side filtering (no backend)
+- `js/contact.js` — contact form demo behaviour (validation only, sends nothing)
+- `assets/categories/README.md` — expected category image filenames and sizes
+
+Every page loads its stylesheets in the same order: `style.css` → `components.css` → the page-specific stylesheet. That shared order is what keeps the visual identity identical across pages.
+
+### Placeholders to replace before launch
+
+Real photography and business data are not available yet, so these are clearly
+marked placeholders (see `rules.md` section 3 — Business Accuracy):
+
+- The eight **product counts** on the category cards.
+- All `assets/*.jpg` images — see `assets/README.md`. Every `<img>` hides itself
+  on error, so a missing photo never breaks the layout.
+- Sample product names, prices, MRPs and brands in `js/shop.js`.
+- The **"Get Directions"** link on `about.html` is `href="#"` until the exact
+  verified store address / map URL is supplied.
+- On `contact.html`: the **Call Us** and **WhatsApp** values are placeholders
+  (no number is invented, and neither is a `tel:`/`wa.me` link); the **map** is
+  a styled placeholder box rather than a real embed; and the **contact form**
+  has no backend, so submitting it shows an inline "not connected yet" notice
+  instead of pretending to send a message.
 
 Next:
 

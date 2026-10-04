@@ -3,7 +3,19 @@ node_modules/
 
 # Test artifacts / verification screenshots
 test-shop-*.png
+test-categories-*.png
+test-about-*.png
+test-contact-*.png
+test-admin-*.png
 shot-*.png
+
+# One-off diagnostic scripts (not part of the demo)
+_diag.js
+_consistency.js
+fix-encoding.js
+
+# Test output logs
+*-out.txt
 
 # OS / editor clutter
 .DS_Store

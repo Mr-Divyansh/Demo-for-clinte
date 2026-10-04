@@ -34,7 +34,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 
   // ---- 2. CSS loaded ----
   const styled = await page.evaluate(() => {
-    const h = document.querySelector('.shop-hero h1');
+    const h = document.querySelector('.page-hero h1');
     const grid = document.querySelector('.shop-grid');
     return {
       h1size: parseFloat(getComputedStyle(h).fontSize),
@@ -53,7 +53,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('desktop: filter sidebar inline & sticky', sidebar.visible && sidebar.pos === 'sticky', JSON.stringify(sidebar));
 
   // ---- 4. Hero padding not doubled ----
-  const heroPad = await page.$eval('.shop-hero', el => getComputedStyle(el).paddingTop);
+  const heroPad = await page.$eval('.page-hero', el => getComputedStyle(el).paddingTop);
   check('hero section padding reset to 0', parseFloat(heroPad) === 0, heroPad);
 
   // ---- 5. Category filter ----
@@ -266,9 +266,9 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(400);
 
   const copy = await page.evaluate(() => ({
-    eyebrow: document.querySelector('.shop-hero .eyebrow').textContent.trim(),
-    h1: document.querySelector('.shop-hero h1').textContent.replace(/\s+/g, ' ').trim(),
-    lead: document.querySelector('.shop-hero__lead').textContent.trim(),
+    eyebrow: document.querySelector('.page-hero .eyebrow').textContent.trim(),
+    h1: document.querySelector('.page-hero h1').textContent.replace(/\s+/g, ' ').trim(),
+    lead: document.querySelector('.page-hero__lead').textContent.trim(),
     crumb: document.querySelector('.breadcrumb').textContent.replace(/\s+/g, ' ').trim(),
     heading: document.querySelector('.shop-head__titles h2').textContent.trim(),
     sub: document.querySelector('.shop-head__titles p').textContent.trim()
@@ -353,7 +353,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('card image uses a replaceable assets/products/ path',
     /assets\/products\/whey-protein\.jpg$/.test(cardBits.img || ''), String(cardBits.img));
 
-  const trust = await page.$$eval('.shop-trust .delivery-card strong', els => els.map(e => e.textContent.trim()));
+  const trust = await page.$$eval('.delivery-strip--dark .delivery-card strong', els => els.map(e => e.textContent.trim()));
   check('trust strip = COD + All India Delivery',
     trust.join('|') === 'Cash on Delivery Available|All India Delivery', trust.join('|'));
 

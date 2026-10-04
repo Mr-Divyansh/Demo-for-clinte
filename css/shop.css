@@ -1,81 +1,14 @@
 /* ==========================================================================
    SHOP PAGE
-   Loaded AFTER css/style.css so every token, button, card and header rule
-   from the homepage stylesheet is reused as-is. Only shop-specific layout,
-   filtering, pagination and the mobile filter drawer live here.
+   Loaded AFTER css/style.css + css/components.css so every token, button, card,
+   inner-page banner and breadcrumb rule is reused as-is. Only shop-specific
+   layout, filtering, pagination and the mobile filter drawer live here.
    ========================================================================== */
 
-/* ---------- Visible keyboard focus (rules.md 9) ---------- */
-:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
-:focus:not(:focus-visible){outline:none}
-
-.sr-only{
-  position:absolute;width:1px;height:1px;
-  padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0,0,0,0);white-space:nowrap;border:0;
-}
-
-.skip-link{
-  position:absolute;top:8px;left:8px;z-index:300;
-  transform:translateY(-200%);
-  background:var(--blue);color:#fff;
-  padding:11px 18px;border-radius:8px;
-  font-weight:800;font-size:14px;
-  transition:transform .14s ease;
-}
-.skip-link:focus{transform:translateY(0)}
-
-/* ==========================================================================
-   SHOP HERO
-   ========================================================================== */
-
-/* style.css sets `section{padding:70px 0}` — reset it, the padding is inside */
-.shop-hero{
-  padding:0;
-  position:relative;
-  overflow:hidden;
-  background:
-    linear-gradient(90deg,rgba(5,9,12,.97) 0%,rgba(5,9,12,.90) 44%,rgba(5,9,12,.52) 76%,rgba(5,9,12,.86) 100%),
-    url("assets/shop-hero.jpg") center/cover no-repeat,
-    #080d12;
-  color:#fff;
-}
-
-.shop-hero__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:40px;
-  padding:62px 0 58px;
-}
-
-.shop-hero__copy{max-width:620px}
-
-.shop-hero .eyebrow{
-  color:#9fc9ff;
-  letter-spacing:2.4px;
-  margin-bottom:14px;
-}
-
-.shop-hero h1{
-  font-size:clamp(30px,4.6vw,50px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  text-transform:uppercase;
-  font-weight:950;
-  margin-bottom:16px;
-}
-.shop-hero h1 span{color:var(--blue)}
-
-.shop-hero__lead{
-  color:#d7dde2;
-  max-width:520px;
-  font-size:15.5px;
-  margin-bottom:22px;
-}
-
-/* Handwritten "Better Fuel Bigger Goals" flourish (desktop only).
-   Uses locally available script fonts so nothing is downloaded. */
+/* ---------- Handwritten "Better Fuel Bigger Goals" flourish ----------
+   The banner itself is the shared .page-hero component. This flourish is
+   shop-only and desktop-only; it uses locally available script fonts so
+   nothing is downloaded. */
 .shop-hero__accent{
   display:none;
   flex:none;
@@ -91,16 +24,6 @@
 .shop-hero__accent span{font-size:21px}
 .shop-hero__accent em{font-style:normal;font-size:32px}
 .shop-hero__accent em:last-child{color:var(--blue)}
-
-/* ---------- Breadcrumb ---------- */
-.breadcrumb{
-  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
-  font-size:12px;font-weight:700;color:#aeb8c1;
-}
-.breadcrumb a{color:#aeb8c1}
-.breadcrumb a:hover{color:#fff;text-decoration:underline}
-.breadcrumb .sep{color:#5b646d}
-.breadcrumb [aria-current]{color:#fff}
 
 /* ==========================================================================
    LAYOUT — filter sidebar + results
@@ -548,21 +471,6 @@ body.drawer-open{overflow:hidden}
   background:var(--blue);
 }
 
-/* ==========================================================================
-   DELIVERY / TRUST STRIP  (dark, same visual language as the homepage)
-   ========================================================================== */
-.delivery-strip.shop-trust{
-  background:#080d12;
-  color:#fff;
-  padding:26px 0;
-}
-.delivery-card.shop-trust__card{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-}
-.delivery-card.shop-trust__card strong{font-size:14.5px}
-.delivery-card.shop-trust__card span{opacity:.68}
-
 /* ---------- Image fallback ---------- */
 .product-image img[data-fallback]{
   width:auto;height:auto;max-width:100%;
@@ -621,10 +529,6 @@ body.drawer-open{overflow:hidden}
 }
 
 @media(max-width:600px){
-  .shop-hero__inner{padding:40px 0 36px}
-  .shop-hero h1{letter-spacing:-1.4px}
-  .shop-hero__lead{font-size:14.5px;margin-bottom:18px}
-
   .shop-wrap{padding:24px 0 56px}
   .shop-layout{gap:18px}
 

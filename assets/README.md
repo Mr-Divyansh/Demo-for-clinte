@@ -8,6 +8,9 @@ external URL, so the demo keeps working offline.
 | File | Used by | Recommended size |
 | --- | --- | --- |
 | `assets/shop-hero.jpg` | Shop page banner (`shop.html`) | 1920 x 760 or larger, dark cinematic gym / athlete photo with empty space on the left |
+| `assets/categories-hero.jpg` | Categories page banner (`categories.html`) | 1920 x 760 or larger, wide dark shelf / gym wall shot with empty space on the left |
+| `assets/category-featured.jpg` | Categories "Why Choose the Right Category?" block | 1200 x 900 or larger |
+| `assets/categories/*.jpg` | Categories category cards | 800 x 800, square — see `assets/categories/README.md` |
 | `assets/products/*.jpg` | Shop page product cards | 800 x 800, square, product on a plain light background |
 | `assets/hero.jpg` | Home page hero (`index.html`) | 1920 x 900 or larger |
 | `assets/category-*.jpg` | Home page category cards | 800 x 1000 |

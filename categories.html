@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop by Category | Speed Boost Nutrition</title>
+  <meta name="description" content="Browse protein, creatine, mass gainer, pre-workout, BCAA, vitamins, amino acids and other supplements by category at Speed Boost Nutrition." />
+
+  <!-- Shared homepage design system, shared inner-page components, then categories-only styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/categories.css" />
+
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+
+  <!-- ================= HEADER (same as homepage) ================= -->
+  <header>
+    <div class="container nav">
+
+      <a class="logo" href="index.html">
+        <div class="logo-mark">SB</div>
+        SPEED <span>BOOST</span> NUTRITION
+      </a>
+
+      <nav class="nav-links" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a class="active" href="categories.html" aria-current="page">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- This page has no product list, so search hands over to the Shop page -->
+        <a class="icon-btn" href="shop.html" aria-label="Search products">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+          </svg>
+        </a>
+
+        <button class="icon-btn" type="button" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21 7H6" />
+            <circle cx="9.5" cy="20" r="1.5" /><circle cx="17.5" cy="20" r="1.5" />
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+
+        <a class="login-btn" href="#">Login / Sign Up</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <!--
+      HERO IMAGE:
+      Put the categories banner at   assets/categories-hero.jpg
+      Recommended: a wide dark shot of a supplement shelf / gym wall with empty
+      space on the left for the text. 1920x760 or larger.
+      Until the photo exists the dark gradient keeps the banner readable.
+    -->
+    <section class="page-hero" style="--page-hero-image:url('assets/categories-hero.jpg')">
+      <div class="container page-hero__inner">
+
+        <div class="page-hero__copy">
+          <p class="eyebrow">Explore Our Range</p>
+
+          <h1>
+            Shop By<br />
+            <span>Category</span>
+          </h1>
+
+          <p class="page-hero__lead">
+            Browse our full range and find the products that fit your fitness goals.
+          </p>
+
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <span aria-current="page">Categories</span>
+          </nav>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= CATEGORY GRID ================= -->
+    <section class="cat-section">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <h2>Explore Categories</h2>
+            <p>Pick a category to see every product in that range.</p>
+          </div>
+          <a class="view-all" href="shop.html">View All &rarr;</a>
+        </div>
+
+        <!--
+          CATEGORY IMAGES — one per card, 800x800 square:
+            assets/categories/protein.jpg
+            assets/categories/creatine.jpg
+            assets/categories/mass-gainer.jpg
+            assets/categories/pre-workout.jpg
+            assets/categories/bcaa.jpg
+            assets/categories/vitamins-wellness.jpg
+            assets/categories/amino-acids.jpg
+            assets/categories/other-supplements.jpg
+
+          PRODUCT COUNTS ARE PLACEHOLDERS.
+          Real category counts are not available yet — swap each number for a
+          live count from the product API before launch.
+
+          Every card links to a matching Shop deep link (shop.html?category=...),
+          which the Shop page already understands.
+        -->
+        <div class="cat-grid">
+
+          <a class="cat-card" href="shop.html?category=protein">
+            <img class="cat-card__img" src="assets/categories/protein.jpg" alt="Protein supplements" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Protein</h3>
+              <p class="cat-card__desc">Build &amp; Recover</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">24 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=creatine">
+            <img class="cat-card__img" src="assets/categories/creatine.jpg" alt="Creatine monohydrate powder" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Creatine</h3>
+              <p class="cat-card__desc">Strength &amp; Power</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">12 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=mass-gainer">
+            <img class="cat-card__img" src="assets/categories/mass-gainer.jpg" alt="Mass gainer supplement" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Mass Gainer</h3>
+              <p class="cat-card__desc">Support Healthy Weight Gain</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">8 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=pre-workout">
+            <img class="cat-card__img" src="assets/categories/pre-workout.jpg" alt="Pre-workout supplement powder" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Pre-Workout</h3>
+              <p class="cat-card__desc">Energy &amp; Focus</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">16 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=other">
+            <img class="cat-card__img" src="assets/categories/bcaa.jpg" alt="BCAA and EAA supplement powder" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>BCAA / EAA</h3>
+              <p class="cat-card__desc">Intra-Workout Support</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">10 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=other">
+            <img class="cat-card__img" src="assets/categories/vitamins-wellness.jpg" alt="Vitamins and wellness supplements" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Vitamins &amp; Wellness</h3>
+              <p class="cat-card__desc">Daily Nutrition Support</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">14 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=other">
+            <img class="cat-card__img" src="assets/categories/amino-acids.jpg" alt="Amino acids supplement powder" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Amino Acids</h3>
+              <p class="cat-card__desc">Recovery &amp; Hydration</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">9 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="cat-card" href="shop.html?category=other">
+            <img class="cat-card__img" src="assets/categories/other-supplements.jpg" alt="Other supplements range" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Other Supplements</h3>
+              <p class="cat-card__desc">Everything Else in the Range</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">18 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= FEATURED CATEGORY ================= -->
+    <section class="cat-feature">
+      <div class="container">
+
+        <div class="cat-feature__grid">
+
+          <!-- FEATURED IMAGE: assets/category-featured.jpg, 1200x900 or larger -->
+          <div class="cat-feature__media">
+            <img src="assets/category-featured.jpg" alt="A range of sports nutrition products arranged on a shelf" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+          </div>
+
+          <div class="cat-feature__copy">
+            <p class="eyebrow">Choose With Confidence</p>
+
+            <h2>Why Choose the Right <span>Category</span>?</h2>
+
+            <p>
+              Choosing by category is the quickest way to find what you need. Each
+              group holds every product that serves the same training purpose, so
+              you can compare sizes, flavours and prices side by side before you order.
+            </p>
+
+            <ul class="cat-feature__list">
+              <li>Compare sizes, flavours and prices before you buy</li>
+              <li>Filter the catalogue by category, price range and availability</li>
+              <li>See what is in stock before you order</li>
+            </ul>
+
+            <a class="btn btn-primary" href="shop.html">Explore Products</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= POPULAR CATEGORIES (quick links) ================= -->
+    <section class="cat-quick">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <h2>Popular Categories</h2>
+            <p>Quick links to the core supplement categories.</p>
+          </div>
+          <a class="view-all" href="shop.html">View All &rarr;</a>
+        </div>
+
+        <div class="quick-grid">
+
+          <a class="quick-card" href="shop.html?category=protein">
+            <div class="quick-card__media">
+              <img src="assets/categories/protein.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            </div>
+            <div class="quick-card__body">
+              <h3>Protein</h3>
+              <span class="quick-card__cta">Shop Now &rarr;</span>
+            </div>
+          </a>
+
+          <a class="quick-card" href="shop.html?category=creatine">
+            <div class="quick-card__media">
+              <img src="assets/categories/creatine.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            </div>
+            <div class="quick-card__body">
+              <h3>Creatine</h3>
+              <span class="quick-card__cta">Shop Now &rarr;</span>
+            </div>
+          </a>
+
+          <a class="quick-card" href="shop.html?category=mass-gainer">
+            <div class="quick-card__media">
+              <img src="assets/categories/mass-gainer.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            </div>
+            <div class="quick-card__body">
+              <h3>Mass Gainer</h3>
+              <span class="quick-card__cta">Shop Now &rarr;</span>
+            </div>
+          </a>
+
+          <a class="quick-card" href="shop.html?category=pre-workout">
+            <div class="quick-card__media">
+              <img src="assets/categories/pre-workout.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            </div>
+            <div class="quick-card__body">
+              <h3>Pre-Workout</h3>
+              <span class="quick-card__cta">Shop Now &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= DELIVERY / TRUST STRIP ================= -->
+    <section class="delivery-strip delivery-strip--dark">
+      <div class="container">
+        <div class="delivery-grid delivery-grid--3">
+
+          <div class="delivery-card">
+            <div class="delivery-icon" aria-hidden="true">&#8377;</div>
+            <div>
+              <strong>Cash on Delivery Available</strong>
+              <span>Pay when you receive your order.</span>
+            </div>
+          </div>
+
+          <div class="delivery-card">
+            <div class="delivery-icon" aria-hidden="true">&#128666;</div>
+            <div>
+              <strong>All India Delivery</strong>
+              <span>Delivery availability can be shown during checkout.</span>
+            </div>
+          </div>
+
+          <div class="delivery-card">
+            <div class="delivery-icon" aria-hidden="true">&check;</div>
+            <div>
+              <strong>Quality Products</strong>
+              <span>Nutrition range from our own store.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER (same as homepage) ================= -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a class="logo" href="index.html">
+          <div class="logo-mark">SB</div>
+          SPEED <span>BOOST</span> NUTRITION
+        </a>
+
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram">IG</a>
+          <a class="social" href="#" aria-label="YouTube">YT</a>
+          <a class="social" href="#" aria-label="Facebook">FB</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Speed Boost Nutrition. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+</body>
+</html>
+
+              <li>Compare sizes, flavours and prices before you buy</li>
+              <li>Filter the catalogue by category, price range and availability</li>
+              <li>See what is in stock before you order</li>
+            </ul>
+
+            <a class="btn btn-primary" href="shop.html">Explore Products</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+            <img class="cat-card__img" src="assets/categories/pre-workout.jpg" alt="Pre-workout supplement powder" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <div class="cat-card__body">
+              <h3>Pre-Workout</h3>
+              <p class="cat-card__desc">Energy &amp; Focus</p>
+              <div class="cat-card__meta">
+                <span class="cat-card__count">16 Products</span>
+                <span class="cat-card__arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+
+          </p>
+
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <span aria-current="page">Categories</span>
+          </nav>
+        </div>
+
+      </div>
+    </section>
+

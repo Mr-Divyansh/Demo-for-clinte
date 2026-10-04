@@ -6,8 +6,9 @@
   <title>Shop All Products | Speed Boost Nutrition</title>
   <meta name="description" content="Browse protein, creatine, mass gainer, pre-workout and wellness supplements at Speed Boost Nutrition. Cash on delivery and all-India shipping." />
 
-  <!-- Shared homepage design system, then shop-only styles -->
+  <!-- Shared homepage design system, then shared inner-page components, then shop-only styles -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/shop.css" />
 
 </head>
@@ -66,10 +67,10 @@
       the left for the text. 1920x760 or larger.
       Until the photo exists the dark gradient keeps the banner readable.
     -->
-    <section class="shop-hero">
-      <div class="container shop-hero__inner">
+    <section class="page-hero" style="--page-hero-image:url('assets/shop-hero.jpg')">
+      <div class="container page-hero__inner">
 
-        <div class="shop-hero__copy">
+        <div class="page-hero__copy">
           <p class="eyebrow">Shop Our Products</p>
 
           <h1>
@@ -77,7 +78,7 @@
             <span>Supplements</span>
           </h1>
 
-          <p class="shop-hero__lead">
+          <p class="page-hero__lead">
             Top quality products for your fitness journey.
           </p>
 
@@ -222,11 +223,11 @@
 
 
     <!-- ================= DELIVERY / TRUST STRIP ================= -->
-    <section class="delivery-strip shop-trust">
+    <section class="delivery-strip delivery-strip--dark">
       <div class="container">
         <div class="delivery-grid">
 
-          <div class="delivery-card shop-trust__card">
+          <div class="delivery-card">
             <div class="delivery-icon" aria-hidden="true">&#8377;</div>
             <div>
               <strong>Cash on Delivery Available</strong>
@@ -234,7 +235,7 @@
             </div>
           </div>
 
-          <div class="delivery-card shop-trust__card">
+          <div class="delivery-card">
             <div class="delivery-icon" aria-hidden="true">&#128666;</div>
             <div>
               <strong>All India Delivery</strong>

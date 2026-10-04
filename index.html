@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speed Boost Nutrition | Premium Sports Nutrition</title>
+  <meta name="description" content="Speed Boost Nutrition — protein, creatine, mass gainer, pre-workout and wellness supplements." />
+
+
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="container nav">
+
+      <a class="logo" href="index.html">
+        <div class="logo-mark">SB</div>
+        SPEED <span>BOOST</span> NUTRITION
+      </a>
+
+      <nav class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Search">⌕</button>
+        <button class="icon-btn" aria-label="Cart">
+          🛒
+          <span class="cart-count">0</span>
+        </button>
+        <a class="login-btn" href="#">Login / Sign Up</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <div class="hero-copy">
+          <div class="eyebrow">Premium Nutrition Supplements</div>
+
+          <h1>
+            Fuel Your<br />
+            <span>Performance</span>
+          </h1>
+
+          <p>
+            Quality nutrition products for your fitness journey.
+            Shop protein, creatine, mass gainers, pre-workout and more.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="shop.html">Shop Now →</a>
+            <a class="btn btn-outline" href="#featured">View Products</a>
+          </div>
+
+          <div class="hero-features">
+            <div class="hero-feature">
+              <div class="hero-feature-icon">₹</div>
+              Cash on Delivery
+            </div>
+
+            <div class="hero-feature">
+              <div class="hero-feature-icon">🚚</div>
+              All India Delivery
+            </div>
+
+            <div class="hero-feature">
+              <div class="hero-feature-icon">✓</div>
+              Quality Products
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+    <section>
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <h2>Shop by Category</h2>
+            <p>Find the right nutrition for your goals.</p>
+          </div>
+
+          <a class="view-all" href="categories.html">View All Categories →</a>
+        </div>
+
+        <div class="categories">
+
+          <a class="category" href="shop.html?category=protein">
+            <img src="assets/category-protein.jpg" alt="Protein supplements">
+            <div class="category-content">
+              <h3>Protein</h3>
+              <p>Build & Recover</p>
+            </div>
+          </a>
+
+          <a class="category" href="shop.html?category=creatine">
+            <img src="assets/category-creatine.jpg" alt="Creatine supplements">
+            <div class="category-content">
+              <h3>Creatine</h3>
+              <p>More Strength</p>
+            </div>
+          </a>
+
+          <a class="category" href="shop.html?category=mass-gainer">
+            <img src="assets/category-gainer.jpg" alt="Mass gainer supplements">
+            <div class="category-content">
+              <h3>Mass Gainer</h3>
+              <p>Gain Healthy Weight</p>
+            </div>
+          </a>
+
+          <a class="category" href="shop.html?category=pre-workout">
+            <img src="assets/category-preworkout.jpg" alt="Pre-workout supplements">
+            <div class="category-content">
+              <h3>Pre-Workout</h3>
+              <p>Boost Energy</p>
+            </div>
+          </a>
+
+          <a class="category" href="shop.html?category=other">
+            <img src="assets/category-other.jpg" alt="Other supplements">
+            <div class="category-content">
+              <h3>Other Supplements</h3>
+              <p>Complete Your Stack</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    <section id="featured" style="padding-top:10px;">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <h2>Featured Products</h2>
+            <p>Popular products from the store.</p>
+          </div>
+
+          <a class="view-all" href="shop.html">View All Products →</a>
+        </div>
+
+        <div class="products">
+
+          <article class="product-card">
+            <div class="product-image">
+              <span class="badge">Bestseller</span>
+              <img src="assets/product-whey.jpg" alt="Whey Protein">
+            </div>
+
+            <div class="product-info">
+              <h3>Whey Protein</h3>
+              <div class="product-meta">2.2 kg · Chocolate</div>
+              <div class="price">₹4,499</div>
+              <div class="stock">● In Stock</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="addToCart('Whey Protein')">Add to Cart</button>
+                <button class="small-cart" aria-label="Add to cart" onclick="addToCart('Whey Protein')">🛒</button>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="assets/product-creatine.jpg" alt="Creatine Monohydrate">
+            </div>
+
+            <div class="product-info">
+              <h3>Creatine Monohydrate</h3>
+              <div class="product-meta">300 g</div>
+              <div class="price">₹1,299</div>
+              <div class="stock">● In Stock</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="addToCart('Creatine Monohydrate')">Add to Cart</button>
+                <button class="small-cart" aria-label="Add to cart" onclick="addToCart('Creatine Monohydrate')">🛒</button>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="assets/product-gainer.jpg" alt="Mass Gainer">
+            </div>
+
+            <div class="product-info">
+              <h3>Mass Gainer</h3>
+              <div class="product-meta">3 kg · Chocolate</div>
+              <div class="price">₹3,999</div>
+              <div class="stock">● In Stock</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="addToCart('Mass Gainer')">Add to Cart</button>
+                <button class="small-cart" aria-label="Add to cart" onclick="addToCart('Mass Gainer')">🛒</button>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="assets/product-preworkout.jpg" alt="Pre-Workout">
+            </div>
+
+            <div class="product-info">
+              <h3>Pre-Workout</h3>
+              <div class="product-meta">300 g · Fruit Punch</div>
+              <div class="price">₹1,999</div>
+              <div class="stock">● In Stock</div>
+
+              <div class="product-bottom">
+                <button class="add-cart" onclick="addToCart('Pre-Workout')">Add to Cart</button>
+                <button class="small-cart" aria-label="Add to cart" onclick="addToCart('Pre-Workout')">🛒</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="why">
+      <div class="container why-grid">
+
+        <div>
+          <div class="eyebrow">Why Choose Us</div>
+          <h2>Your Fitness, <span>Our Priority</span></h2>
+
+          <p>
+            A clean, reliable nutrition store built around quality products,
+            simple ordering and helpful support.
+          </p>
+
+          <br />
+
+          <a class="btn btn-primary" href="about.html">Learn More →</a>
+        </div>
+
+        <div class="why-list">
+
+          <div class="why-item">
+            <div class="why-icon">✓</div>
+            <div>
+              <h3>Quality Products</h3>
+              <p>Shop verified product information and clear details.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon">◉</div>
+            <div>
+              <h3>Expert Support</h3>
+              <p>Get help choosing the right products for your goals.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon">₹</div>
+            <div>
+              <h3>Best Value</h3>
+              <p>Simple pricing with useful product information.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon">🚚</div>
+            <div>
+              <h3>Fast Delivery</h3>
+              <p>Delivery options clearly shown before checkout.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= DELIVERY ================= -->
+    <div class="delivery-strip">
+      <div class="container delivery-grid">
+
+        <div class="delivery-card">
+          <div class="delivery-icon">🚚</div>
+          <div>
+            <strong>Cash on Delivery Available</strong>
+            <span>Pay when you receive your order.</span>
+          </div>
+        </div>
+
+        <div class="delivery-card blue">
+          <div class="delivery-icon">📦</div>
+          <div>
+            <strong>All India Delivery</strong>
+            <span>Delivery availability shown during checkout.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ================= PHYSICAL STORE ================= -->
+    <section class="store">
+      <div class="container store-grid">
+
+        <div class="store-image">
+          <img src="assets/store.jpg" alt="Speed Boost Nutrition store">
+        </div>
+
+        <div class="store-copy">
+          <div class="eyebrow">Visit Our Store</div>
+          <h2>Our Physical <span>Store</span></h2>
+
+          <p>
+            Visit the store and explore the available nutrition range.
+            Replace this section with the client's real store information,
+            address and verified details.
+          </p>
+
+          <div class="location">📍 Sonipat, Haryana</div>
+
+          <a class="btn btn-primary" href="#" target="_blank">Get Directions →</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= INSTAGRAM ================= -->
+    <section class="instagram">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <h2>Follow Us on Instagram</h2>
+            <p>Latest products, updates and content.</p>
+          </div>
+
+          <a class="view-all" href="#" target="_blank">@speedboostnutrition →</a>
+        </div>
+
+        <div class="insta-grid">
+          <div class="insta-card"><img src="assets/instagram-1.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-2.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-3.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-4.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-5.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-6.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-7.jpg" alt="Instagram post"></div>
+          <div class="insta-card"><img src="assets/instagram-8.jpg" alt="Instagram post"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a class="logo" href="index.html">
+          <div class="logo-mark">SB</div>
+          SPEED <span>BOOST</span> NUTRITION
+        </a>
+
+        <nav class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="socials">
+          <a class="social" href="#" target="_blank">IG</a>
+          <a class="social" href="#" target="_blank">YT</a>
+          <a class="social" href="#" target="_blank">FB</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 Speed Boost Nutrition. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================= SIMPLE DEMO JS ================= -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart(productName){
+      cartCount++;
+      const counter = document.querySelector(".cart-count");
+      counter.textContent = cartCount;
+      alert(productName + " added to cart.");
+    }
+  </script>
+
+</body>
+</html>

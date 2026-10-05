@@ -93,8 +93,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('hero lead copy',
     hero.lead === 'Browse our full range and find the products that fit your fitness goals.', hero.lead);
   check('breadcrumb = Home / Categories', hero.crumb === 'Home / Categories', hero.crumb);
-  check('hero uses the replaceable assets/categories-hero.jpg path',
-    /categories-hero\.jpg/.test(hero.image), hero.image.trim());
+  check('hero uses the replaceable remote hero image',
+    /images\.unsplash\.com\//.test(hero.image), hero.image.trim());
 
   // ---- 5. Card anatomy ----
   const anatomy = await page.evaluate(() => {
@@ -126,8 +126,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     cardCopy.map(c => c.name).join('|') ===
     'Protein|Creatine|Mass Gainer|Pre-Workout|BCAA / EAA|Vitamins & Wellness|Amino Acids|Other Supplements',
     cardCopy.map(c => c.name).join('|'));
-  check('card images use replaceable assets/categories/*.jpg paths',
-    cardCopy.every(c => /^assets\/categories\/[a-z-]+\.jpg$/.test(c.img)),
+  check('card images use the remote CDN URLs',
+    cardCopy.every(c => /^https:\/\/images\.unsplash\.com\//.test(c.img)),
     cardCopy.map(c => c.img).join(', '));
   check('card descriptions are all populated',
     cardCopy.every(c => c.desc.length > 3),
@@ -164,8 +164,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   }));
   check('featured H2 matches the brief',
     feature.heading === 'Why Choose the Right Category?', feature.heading);
-  check('featured image uses the replaceable category-featured.jpg path',
-    feature.img === 'assets/category-featured.jpg', feature.img);
+  check('featured image uses the remote CDN URL',
+    /^https:\/\/images\.unsplash\.com\//.test(feature.img), feature.img);
   check('featured list has supporting points', feature.bullets === 3, `${feature.bullets}`);
   check('featured CTA links to the Shop page',
     feature.cta === 'shop.html' && feature.ctaText === 'Explore Products',

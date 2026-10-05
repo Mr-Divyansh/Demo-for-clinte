@@ -500,7 +500,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await shoot(900, 1000, 'test-admin-tablet.png');
   await shoot(390, 844, 'test-admin-mobile.png');
 
-  // Only script errors matter; missing assets/*.jpg are expected until real
+  // Only script errors matter; remote images need network so load failures are tolerated
   // photography is supplied (the onerror fallback hides them).
   const realErrors = errors.filter(e => !e.includes('ERR_FILE_NOT_FOUND'));
   check('no JS/script errors', realErrors.length === 0, realErrors.join(' | '));

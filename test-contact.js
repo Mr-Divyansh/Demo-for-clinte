@@ -105,8 +105,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('hero supporting text matches the spec',
     hero.lead === 'Have a question about a product, order or store? Get in touch with us.', hero.lead);
   check('breadcrumb = Home / Contact', hero.crumb === 'Home / Contact', hero.crumb);
-  check('hero uses the replaceable assets/contact-hero.jpg path',
-    /contact-hero\.jpg/.test(hero.image), hero.image.trim());
+  check('hero uses the replaceable remote hero image',
+    /images\.unsplash\.com\//.test(hero.image), hero.image.trim());
 
   // ---- 5. Contact information cards ----
   const info = await page.evaluate(() => [...document.querySelectorAll('.info-card')].map(c => ({
@@ -385,7 +385,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(500);
   await page.screenshot({ path: 'test-contact-mobile.png', fullPage: true });
 
-  // Only script errors matter; missing assets/*.jpg are expected until real
+  // Only script errors matter; remote images need network so load failures are tolerated
   // photography is supplied (the onerror fallback hides them).
   const realErrors = errors.filter(e => !e.includes('ERR_FILE_NOT_FOUND'));
   check('no JS/script errors', realErrors.length === 0, realErrors.join(' | '));

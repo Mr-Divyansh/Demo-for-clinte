@@ -350,8 +350,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('card shows badge + price + stock + Add to Cart',
     cardBits.badge === 'Bestseller' && cardBits.price === '₹4,499' &&
     cardBits.stock === 'In Stock' && cardBits.button === 'Add to Cart', JSON.stringify(cardBits));
-  check('card image uses a replaceable assets/products/ path',
-    /assets\/products\/whey-protein\.jpg$/.test(cardBits.img || ''), String(cardBits.img));
+  check('card image uses a replaceable remote product image',
+    /^https:\/\/images\.unsplash\.com\//.test(cardBits.img || ''), String(cardBits.img));
 
   const trust = await page.$$eval('.delivery-strip--dark .delivery-card strong', els => els.map(e => e.textContent.trim()));
   check('trust strip = COD + All India Delivery',
@@ -373,7 +373,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(500);
   await page.screenshot({ path: 'test-shop-mobile.png' });
 
-  // Only script errors matter; missing assets/*.jpg are expected until real
+  // Only script errors matter; remote images need network so load failures are tolerated
   // product photography is supplied (the onerror fallback handles them).
   const realErrors = errors.filter(e => !e.includes('ERR_FILE_NOT_FOUND'));
   check('no JS/script errors', realErrors.length === 0, realErrors.join(' | '));

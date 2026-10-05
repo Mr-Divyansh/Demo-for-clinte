@@ -74,11 +74,11 @@
     ],
 
         topProducts: [
-      { name: 'Whey Protein',         category: 'Protein',     units: 412, revenue: '₹18,51,588', image: 'assets/products/whey-protein.jpg' },
-      { name: 'Creatine Monohydrate', category: 'Creatine',    units: 356, revenue: '₹4,62,444',  image: 'assets/products/creatine.jpg' },
-      { name: 'Mass Gainer',          category: 'Mass Gainer', units: 208, revenue: '₹8,31,792',  image: 'assets/products/mass-gainer.jpg' },
-      { name: 'Pre-Workout',          category: 'Pre-Workout', units: 164, revenue: '₹3,27,836',  image: 'assets/products/pre-workout.jpg' },
-      { name: 'BCAA',                 category: 'Other',       units: 141, revenue: '₹2,11,359',  image: 'assets/products/bcaa.jpg' }
+      { name: 'Whey Protein',         category: 'Protein',     units: 412, revenue: '₹18,51,588', image: 'https://images.unsplash.com/photo-1693996045300-521e9d08cabc?auto=format&fit=crop&w=1200&q=70' },
+      { name: 'Creatine Monohydrate', category: 'Creatine',    units: 356, revenue: '₹4,62,444',  image: 'https://images.unsplash.com/photo-1693996045435-af7c48b9cafb?auto=format&fit=crop&w=1200&q=70' },
+      { name: 'Mass Gainer',          category: 'Mass Gainer', units: 208, revenue: '₹8,31,792',  image: 'https://images.unsplash.com/photo-1729704200280-0d0dda0f3c60?auto=format&fit=crop&w=1200&q=70' },
+      { name: 'Pre-Workout',          category: 'Pre-Workout', units: 164, revenue: '₹3,27,836',  image: 'https://images.unsplash.com/photo-1610360277501-ea948686dc52?auto=format&fit=crop&w=1200&q=70' },
+      { name: 'BCAA',                 category: 'Other',       units: 141, revenue: '₹2,11,359',  image: 'https://images.unsplash.com/photo-1693996046865-19217d179161?auto=format&fit=crop&w=1200&q=70' }
     ],
 
         alerts: [

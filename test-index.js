@@ -123,15 +123,14 @@ async function failedRequests(page) {
       alt: i.getAttribute('alt')
     })));
   const broken = imgs.filter(i => !i.ok);
-  check('every local image loads', broken.length === 0,
+  check('every image loads', broken.length === 0,
     broken.length ? broken.map(b => b.src).join(' ') : `${imgs.length} images`);
   check('no image is missing alt', imgs.every(i => i.alt && i.alt.trim().length),
     `${imgs.filter(i => !i.alt).length} missing`);
 
-  // products live under assets/products/, not assets/
   const productSrcs = await page.$$eval('.product-image img', els => els.map(e => e.getAttribute('src')));
-  check('product images point at assets/products/',
-    productSrcs.length > 0 && productSrcs.every(s => s.startsWith('assets/products/')),
+  check('product images use the remote CDN URLs',
+    productSrcs.length > 0 && productSrcs.every(s => /^https:\/\/images\.unsplash\.com\//.test(s)),
     productSrcs[0] || 'none');
 
   // ---- 5. Prices render with the rupee sign ----

@@ -107,8 +107,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     await page.$eval('.page-hero h1', el => getComputedStyle(el).textTransform) === 'uppercase');
   check('hero supporting text present', hero.lead.length > 40, hero.lead);
   check('breadcrumb = Home / About', hero.crumb === 'Home / About', hero.crumb);
-  check('hero uses the replaceable assets/about-hero.jpg path',
-    /about-hero\.jpg/.test(hero.image), hero.image.trim());
+  check('hero uses the replaceable remote hero image',
+    /images\.unsplash\.com\//.test(hero.image), hero.image.trim());
 
 
 // ---- 5. Our Story ----
@@ -125,7 +125,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('story has 3 supporting paragraphs', story.paras === 3, `${story.paras}`);
   check('story covers physical + online shopping',
     /physical store|in person/i.test(story.text) && /online/i.test(story.text));
-  check('story uses the replaceable assets/store.jpg path', story.img === 'assets/store.jpg', story.img);
+  check('story uses the replaceable remote store image', /^https:\/\/images\.unsplash\.com\//.test(story.img), story.img);
   check('desktop story block is a 2-column split', story.cols === 2, `${story.cols} cols`);
 
   // ---- 6. What We Offer ----
@@ -186,7 +186,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('store CTA = "Get Directions ->"',
     store.cta === 'Get Directions ' + String.fromCodePoint(0x2192), JSON.stringify(store.cta));
   check('store directions link is a flagged placeholder', store.ctaHref === '#', `href="${store.ctaHref}"`);
-  check('store uses the replaceable assets/store.jpg path', store.img === 'assets/store.jpg', store.img);
+  check('store uses the replaceable remote store image', /^https:\/\/images\.unsplash\.com\//.test(store.img), store.img);
   check('store lists 3 practical points', store.bullets === 3, `${store.bullets}`);
   check('desktop store block is a 2-column split', store.cols === 2, `${store.cols} cols`);
 
@@ -352,7 +352,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   await wait(500);
   await page.screenshot({ path: 'test-about-mobile.png', fullPage: true });
 
-  // Only script errors matter; missing assets/*.jpg are expected until real
+  // Only script errors matter; remote images need network so load failures are tolerated
   // photography is supplied (the onerror fallback hides them).
   const realErrors = errors.filter(e => !e.includes('ERR_FILE_NOT_FOUND'));
   check('no JS/script errors', realErrors.length === 0, realErrors.join(' | '));

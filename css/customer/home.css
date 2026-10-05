@@ -120,8 +120,6 @@
   justify-content:center;
   gap:8px;
   font-size:12.5px;
-  transition:background var(--t) var(--ease),transform var(--t) var(--ease),
-             box-shadow var(--t) var(--ease);
 }
 .add-cart .icon{font-size:15px}
 .add-cart.added{background:var(--green);box-shadow:0 4px 12px rgba(32,177,90,.32)}
@@ -199,13 +197,8 @@
   color:#fff;
   font-size:24px;
   opacity:0;
-  transition:opacity .22s;
+  transition:opacity var(--t);
 }
 .insta-card:hover .insta-overlay,
 .insta-card:focus-visible .insta-overlay{opacity:1}
-.social{
-  display:grid;
-  place-items:center;
-  font-size:16px;
-}
-.product-card{transition:transform .2s,box-shadow .2s}
+.social .icon{font-size:16px}

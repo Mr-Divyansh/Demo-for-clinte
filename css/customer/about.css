@@ -1,12 +1,6 @@
 .about-story .eyebrow,
 .about-offer .eyebrow,
 .about-store .eyebrow{color:#717980}
-.btn-outline-dark{
-  border-color:var(--border);
-  color:var(--text);
-  background:#fff;
-}
-.btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
 .about-story{padding:70px 0}
 .about-story__grid{
   display:grid;

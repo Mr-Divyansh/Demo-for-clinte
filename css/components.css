@@ -1,4 +1,10 @@
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
+.btn-outline-dark{
+  border-color:var(--border);
+  color:var(--text);
+  background:#fff;
+}
+.btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
 .page-hero{
   padding:0;
   position:relative;

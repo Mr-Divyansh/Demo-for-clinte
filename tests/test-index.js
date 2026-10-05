@@ -13,7 +13,9 @@ const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fs = require('fs');
 
-const SITE = 'file:///' + path.resolve(__dirname, 'index.html').replace(/\\/g, '/');
+const ROOT = path.resolve(__dirname, '..');
+
+const SITE = 'file:///' + path.resolve(ROOT, 'index.html').replace(/\\/g, '/');
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 const RUPEE = String.fromCodePoint(0x20b9);
@@ -174,7 +176,7 @@ async function failedRequests(page) {
   const hrefs = await page.evaluate(() =>
     [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'))
       .filter(h => h && !/^(https?:|mailto:|tel:|#)/.test(h)));
-  const deadLinks = [...new Set(hrefs)].filter(h => !fs.existsSync(path.resolve(__dirname, h.split('?')[0])));
+  const deadLinks = [...new Set(hrefs)].filter(h => !fs.existsSync(path.resolve(ROOT, h.split('?')[0])));
   check('all internal links point at real files', deadLinks.length === 0,
     deadLinks.length ? deadLinks.join(' ') : `${new Set(hrefs).size} links`);
 

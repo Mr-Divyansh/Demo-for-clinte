@@ -4,13 +4,13 @@
   "private": true,
   "description": "Static client demo for D Web Studio (index.html + shop.html + categories.html + about.html + contact.html + admin.html). No runtime dependencies; Puppeteer is used only for the page smoke tests.",
   "scripts": {
-    "test": "node test-index.js && node test-shop.js && node test-categories.js && node test-about.js && node test-contact.js && node test-admin.js",
-    "test:index": "node test-index.js",
-    "test:shop": "node test-shop.js",
-    "test:categories": "node test-categories.js",
-    "test:about": "node test-about.js",
-    "test:contact": "node test-contact.js",
-    "test:admin": "node test-admin.js"
+    "test": "node tests/test-index.js && node tests/test-shop.js && node tests/test-categories.js && node tests/test-about.js && node tests/test-contact.js && node tests/test-admin.js",
+    "test:index": "node tests/test-index.js",
+    "test:shop": "node tests/test-shop.js",
+    "test:categories": "node tests/test-categories.js",
+    "test:about": "node tests/test-about.js",
+    "test:contact": "node tests/test-contact.js",
+    "test:admin": "node tests/test-admin.js"
   },
   "devDependencies": {
     "puppeteer-core": "^23.11.1"

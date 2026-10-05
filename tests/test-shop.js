@@ -1,7 +1,9 @@
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 
-const SITE = 'file:///' + path.resolve(__dirname, 'shop.html').replace(/\\/g, '/');
+const ROOT = path.resolve(__dirname, '..');
+
+const SITE = 'file:///' + path.resolve(ROOT, 'shop.html').replace(/\\/g, '/');
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 const pass = [], fail = [];

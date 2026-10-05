@@ -1,15 +1,20 @@
 (function (global) {
   'use strict';
-
+  var CATALOG = global.SHOP_CATALOG;
+  var TOP_SALES = [
+    { name: 'Whey Protein',         units: 412, revenue: '₹18,51,588' },
+    { name: 'Creatine Monohydrate', units: 356, revenue: '₹4,62,444'  },
+    { name: 'Mass Gainer',          units: 208, revenue: '₹8,31,792'  },
+    { name: 'Pre-Workout',          units: 164, revenue: '₹3,27,836'  },
+    { name: 'BCAA',                 units: 141, revenue: '₹2,11,359'  }
+  ];
   var ADMIN_DATA = {
-
         kpi: {
       sales: '₹4,82,650',
       orders: '1,247',
       pending: '23',
       customers: '986'
     },
-
         sales: {
       today: {
         label: 'Today',
@@ -62,7 +67,6 @@
       { key: 'delivered',  label: 'Delivered',  count: 96, color: '#20b15a' },
       { key: 'cancelled',  label: 'Cancelled',  count: 6,  color: '#d14343' }
     ],
-
         orders: [
       { id: '#SB-1042', customer: 'Amit Sharma',   phone: '98XXXX2214', items: 'Whey Protein, Creatine Monohydrate', amount: '₹5,798', payment: 'COD',     date: '12 Mar', status: 'pending'    },
       { id: '#SB-1041', customer: 'Priya Nair',    phone: '97XXXX8802', items: 'Pre-Workout',                      amount: '₹1,999', payment: 'Online', date: '12 Mar', status: 'confirmed'  },
@@ -72,15 +76,16 @@
       { id: '#SB-1037', customer: 'Ankit Dahiya',  phone: '70XXXX3391', items: 'C4 Pre-Workout',                   amount: '₹2,499', payment: 'Online', date: '10 Mar', status: 'delivered'  },
       { id: '#SB-1036', customer: 'Neha Bansal',   phone: '99XXXX6624', items: 'L-Glutamine',                      amount: '₹1,299', payment: 'COD',     date: '09 Mar', status: 'cancelled'  }
     ],
-
-        topProducts: [
-      { name: 'Whey Protein',         category: 'Protein',     units: 412, revenue: '₹18,51,588', image: 'https://images.unsplash.com/photo-1693996045300-521e9d08cabc?auto=format&fit=crop&q=70&w=900&h=900' },
-      { name: 'Creatine Monohydrate', category: 'Creatine',    units: 356, revenue: '₹4,62,444',  image: 'https://images.unsplash.com/photo-1693996045435-af7c48b9cafb?auto=format&fit=crop&q=70&w=900&h=900' },
-      { name: 'Mass Gainer',          category: 'Mass Gainer', units: 208, revenue: '₹8,31,792',  image: 'https://images.unsplash.com/photo-1729704200280-0d0dda0f3c60?auto=format&fit=crop&q=70&w=900&h=900' },
-      { name: 'Pre-Workout',          category: 'Pre-Workout', units: 164, revenue: '₹3,27,836',  image: 'https://images.unsplash.com/photo-1610360277501-ea948686dc52?auto=format&fit=crop&q=70&w=900&h=900' },
-      { name: 'BCAA',                 category: 'Other',       units: 141, revenue: '₹2,11,359',  image: 'https://images.unsplash.com/photo-1693996046865-19217d179161?auto=format&fit=crop&q=70&w=900&h=900' }
-    ],
-
+        topProducts: TOP_SALES.map(function (row) {
+      var product = CATALOG.byName(row.name);
+      return {
+        name: row.name,
+        category: CATALOG.categoryLabel(product.category),
+        units: row.units,
+        revenue: row.revenue,
+        image: product.image
+      };
+    }),
         alerts: [
       { tone: 'warning', title: '23 orders awaiting confirmation', text: 'Oldest pending order is 2 days old.' },
       { tone: 'danger',  title: '2 products low on stock',        text: 'ISO Whey Protein and Multivitamin need restocking.' },
@@ -88,6 +93,5 @@
       { tone: 'info',    title: '6 orders cancelled this week',   text: 'Review reasons before the next restock.' }
     ]
   };
-
   global.ADMIN_DATA = ADMIN_DATA;
 })(window);

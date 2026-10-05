@@ -15,7 +15,9 @@
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 
-const SITE = 'file:///' + path.resolve(__dirname, 'admin.html').replace(/\\/g, '/');
+const ROOT = path.resolve(__dirname, '..');
+
+const SITE = 'file:///' + path.resolve(ROOT, 'admin.html').replace(/\\/g, '/');
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 const RUPEE = String.fromCodePoint(0x20B9);
@@ -265,7 +267,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('no unmasked phone number in the demo data', phone === null, phone ? phone[0] : 'none');
 
   // ---- 11. UI-only: no backend, auth, API or payments ----
-  const jsSrc = require('fs').readFileSync(path.join(__dirname, 'js', 'admin.js'), 'utf8')
+  const jsSrc = require('fs').readFileSync(path.join(ROOT, 'js', 'admin', 'admin.js'), 'utf8')
     // drop the header comment so the "no fetch" note is not counted as a call
     .replace(/\/\*[\s\S]*?\*\//g, '');
   check('admin.js has no fetch / XHR / sendBeacon / WebSocket',
@@ -286,7 +288,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('no third-party script or font is loaded',
     await page.$$eval('script[src^="http"], link[href^="http"]', els => els.length) === 0);
   check('no chart library dependency was added',
-    !require('fs').readFileSync(path.join(__dirname, 'package.json'), 'utf8')
+    !require('fs').readFileSync(path.join(ROOT, 'package.json'), 'utf8')
       .match(/chart|d3|recharts/i));
 // ---- 12. Visual identity parity with the customer site ----
   const identity = await page.evaluate(() => {

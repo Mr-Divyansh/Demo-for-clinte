@@ -12,7 +12,9 @@
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 
-const SITE = 'file:///' + path.resolve(__dirname, 'contact.html').replace(/\\/g, '/');
+const ROOT = path.resolve(__dirname, '..');
+
+const SITE = 'file:///' + path.resolve(ROOT, 'contact.html').replace(/\\/g, '/');
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 const ARROW = String.fromCodePoint(0x2192);
@@ -197,7 +199,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('submitting shows an honest inline demo notice',
     /not connected yet/i.test(netCalls.text), JSON.stringify(netCalls.text));
 
-  const jsSrc = require('fs').readFileSync(path.join(__dirname, 'js', 'contact.js'), 'utf8');
+  const jsSrc = require('fs').readFileSync(path.join(ROOT, 'js', 'customer', 'contact.js'), 'utf8');
   check('js/contact.js contains no fetch / XHR / sendBeacon',
     !/fetch\(|XMLHttpRequest|sendBeacon/.test(jsSrc));
 

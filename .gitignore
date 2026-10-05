@@ -2,6 +2,7 @@
 node_modules/
 
 # Test artifacts / verification screenshots
+test-index-*.png
 test-shop-*.png
 test-categories-*.png
 test-about-*.png
@@ -9,7 +10,11 @@ test-contact-*.png
 test-admin-*.png
 shot-*.png
 
-# One-off diagnostic scripts (not part of the demo)
+# One-off scripts and scratch files (not part of the demo)
+_*.js
+_*.css
+_*.png
+_*.txt
 _diag.js
 _consistency.js
 fix-encoding.js

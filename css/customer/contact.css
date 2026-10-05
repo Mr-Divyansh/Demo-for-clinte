@@ -1,135 +1,118 @@
-
-
 .contact-info .eyebrow,
 .contact-form-section .eyebrow,
 .contact-faq .eyebrow,
 .contact-store .eyebrow{color:#717980}
-
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
-
 .btn-outline-dark{
   border-color:var(--border);
   color:var(--text);
   background:#fff;
 }
 .btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
-
 .contact-info{padding:66px 0 72px}
-
 .info-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:16px;
 }
-
 .info-card{
   display:flex;
   flex-direction:column;
-  padding:26px 22px 28px;
-  border-radius:var(--radius);
-  background:#fff;
+  padding:28px 24px 30px;
+  border-radius:var(--r-lg);
+  background:var(--surface);
   border:1px solid var(--border);
-  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--t-slow) var(--ease),border-color var(--t-slow) var(--ease),
+             box-shadow var(--t-slow) var(--ease);
 }
-
 .info-card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-5px);
   border-color:#bcd8fb;
-  box-shadow:0 16px 36px rgba(15,23,42,.08);
+  box-shadow:var(--shadow-lg);
 }
-
 .info-card__icon{
   display:grid;
   place-items:center;
-  width:46px;
-  height:46px;
-  border-radius:12px;
-  margin-bottom:16px;
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  margin-bottom:18px;
   background:rgba(22,140,255,.12);
+  border:1px solid rgba(22,140,255,.2);
   color:var(--blue);
+  transition:transform var(--t) var(--ease),background var(--t) var(--ease);
 }
-
+.info-card:hover .info-card__icon{
+  transform:scale(1.06);
+  background:rgba(22,140,255,.2);
+}
 .info-card__icon svg{width:24px;height:24px}
-
 .info-card h3{
   font-size:15.5px;
   margin-bottom:8px;
 }
-
 .info-card__value{
   font-size:14px;
   font-weight:800;
   color:var(--text);
   margin-bottom:8px;
 }
-
 .info-card__value--pending{
   color:#8a939c;
   font-weight:700;
   font-style:italic;
 }
-
 .info-card--pending{
   border-style:dashed;
   background:#fcfcfd;
 }
-
 .info-card__note{
   font-size:13px;
   color:var(--muted);
   margin-top:auto;
 }
-
 .info-card__link{
   margin-top:auto;
   font-size:13px;
   font-weight:800;
   color:var(--blue);
 }
-
 .info-card__link:hover{text-decoration:underline}
-
 .contact-form-section{
   background:#fafbfc;
   border-top:1px solid var(--border);
   padding:70px 0 76px;
 }
-
 .contact-form__grid{
   display:grid;
   grid-template-columns:1fr 1.05fr;
   gap:44px;
   align-items:start;
 }
-
 .contact-form__intro h2{
   font-size:clamp(24px,3.2vw,34px);
   letter-spacing:-1.3px;
   margin:12px 0 16px;
 }
-
 .contact-form__intro h2 span{color:var(--blue)}
-
 .contact-form__intro > p{
   color:var(--muted);
   font-size:15px;
   margin-bottom:22px;
 }
-
 .contact-form__points{
   display:grid;
   gap:11px;
   list-style:none;
   margin:0;
 }
-
 .contact-form__points li{
   position:relative;
   padding-left:28px;
   font-size:14px;
   color:#414c56;
 }
-
 .contact-form__points li::before{
   content:"\2713";
   position:absolute;
@@ -145,7 +128,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   font-size:10.5px;
   font-weight:900;
 }
-
 .contact-form{
   background:#fff;
   border:1px solid var(--border);
@@ -153,9 +135,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   padding:28px 30px 26px;
   box-shadow:0 18px 40px rgba(15,23,42,.06);
 }
-
 .form-field{margin-bottom:18px}
-
 .form-field label{
   display:block;
   font-size:12px;
@@ -165,7 +145,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:var(--text);
   margin-bottom:8px;
 }
-
 .form-field input,
 .form-field select,
 .form-field textarea{
@@ -179,9 +158,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   font-size:14.5px;
   transition:border-color .18s ease,box-shadow .18s ease;
 }
-
 .form-field textarea{resize:vertical;min-height:118px}
-
 .form-field select{
   appearance:none;
   -webkit-appearance:none;
@@ -194,10 +171,8 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   padding-right:40px;
   cursor:pointer;
 }
-
 .form-field input::placeholder,
 .form-field textarea::placeholder{color:#a7afb7}
-
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus{
@@ -205,24 +180,19 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   border-color:var(--blue);
   box-shadow:0 0 0 3px rgba(22,140,255,.16);
 }
-
 .form-field__hint{
   font-size:12.5px;
   color:var(--muted);
   margin-top:7px;
 }
-
 .form-submit{width:100%;margin-top:4px}
-
 .form-status{
   font-size:13.5px;
   font-weight:700;
   margin-top:12px;
   min-height:0;
 }
-
 .form-status:empty{display:none}
-
 .form-status--demo{
   color:#8a6d1f;
   background:#fdf6e3;
@@ -231,33 +201,27 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   padding:11px 13px;
   font-weight:700;
 }
-
 .form-note{
   font-size:12.5px;
   color:var(--muted);
   margin-top:14px;
 }
-
 .contact-store{padding:70px 0}
-
 .contact-store__grid{
   display:grid;
   grid-template-columns:1fr 1.1fr;
   gap:36px;
   align-items:stretch;
 }
-
 .contact-store__copy h3{
   font-size:19px;
   margin-bottom:12px;
 }
-
 .contact-store__copy > p{
   color:var(--muted);
   font-size:14.5px;
   margin-bottom:18px;
 }
-
 .contact-store__address{
   display:flex;
   align-items:center;
@@ -266,7 +230,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   font-weight:800;
   margin-bottom:14px;
 }
-
 .contact-store__pin{
   display:grid;
   place-items:center;
@@ -277,16 +240,13 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   background:rgba(22,140,255,.12);
   color:var(--blue);
 }
-
 .contact-store__pin svg{width:20px;height:20px}
-
 .contact-store__pending{
   font-size:13px;
   color:#8a939c;
   font-style:italic;
   margin-bottom:22px;
 }
-
 .contact-map{
   border:1px solid var(--border);
   border-radius:var(--radius);
@@ -294,7 +254,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   background:#fff;
   min-height:320px;
 }
-
 .contact-map__placeholder{
   height:100%;
   min-height:320px;
@@ -310,7 +269,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
     repeating-linear-gradient(90deg,rgba(15,23,42,.045) 0 1px,transparent 1px 46px),
     #f6f7f8;
 }
-
 .contact-map__icon{
   display:grid;
   place-items:center;
@@ -322,53 +280,43 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:var(--muted);
   margin-bottom:4px;
 }
-
 .contact-map__icon svg{width:27px;height:27px}
-
 .contact-map__title{
   font-size:15.5px;
   font-weight:900;
   color:var(--text);
 }
-
 .contact-map__text{
   font-size:13.5px;
   color:var(--muted);
   max-width:330px;
 }
-
 .contact-faq{
   background:#fafbfc;
   border-top:1px solid var(--border);
   padding:68px 0 74px;
 }
-
 .contact-faq__head{
   max-width:620px;
   margin:0 auto 34px;
   text-align:center;
 }
-
 .contact-faq__head h2{
   font-size:clamp(26px,3.4vw,36px);
   letter-spacing:-1.5px;
   margin:12px 0 14px;
 }
-
 .contact-faq__head h2 span{color:var(--blue)}
-
 .contact-faq__lead{
   color:var(--muted);
   font-size:15px;
 }
-
 .faq-list{
   max-width:800px;
   margin:0 auto;
   display:grid;
   gap:11px;
 }
-
 .faq-item{
   background:#fff;
   border:1px solid var(--border);
@@ -376,12 +324,10 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   overflow:hidden;
   transition:border-color .2s ease,box-shadow .2s ease;
 }
-
 .faq-item[open]{
   border-color:#bcd8fb;
   box-shadow:0 12px 28px rgba(15,23,42,.05);
 }
-
 .faq-item summary{
   display:flex;
   align-items:center;
@@ -394,11 +340,8 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:var(--text);
   list-style:none;
 }
-
 .faq-item summary::-webkit-details-marker{display:none}
-
 .faq-item summary:hover{color:var(--blue)}
-
 .faq-item__icon{
   position:relative;
   flex:none;
@@ -408,7 +351,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   background:rgba(22,140,255,.12);
   transition:transform .2s ease,background .2s ease;
 }
-
 .faq-item__icon::before,
 .faq-item__icon::after{
   content:"";
@@ -419,89 +361,71 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   transform:translate(-50%,-50%);
   border-radius:2px;
 }
-
 .faq-item__icon::before{width:10px;height:2px}
 .faq-item__icon::after{width:2px;height:10px}
-
 .faq-item[open] .faq-item__icon{
   transform:rotate(180deg);
   background:rgba(22,140,255,.22);
 }
-
 .faq-item[open] .faq-item__icon::after{opacity:0}
-
 .faq-item__body{
   padding:0 22px 20px;
 }
-
 .faq-item__body p{
   color:var(--muted);
   font-size:14px;
 }
-
 .faq-item__body a{
   color:var(--blue);
   font-weight:700;
   text-decoration:underline;
 }
-
 .contact-cta{
   background:#0e141b;
   color:#fff;
   padding:74px 0 80px;
   text-align:center;
 }
-
 .contact-cta__inner{max-width:680px}
-
 .contact-cta h2{
   font-size:clamp(26px,3.8vw,42px);
   letter-spacing:-1.8px;
   text-transform:uppercase;
   line-height:1.04;
 }
-
 .contact-cta h2 span{color:var(--blue)}
-
 .contact-cta p{
   color:#c3ccd4;
   font-size:15.5px;
   margin:16px auto 30px;
   max-width:520px;
 }
-
 .contact-cta__actions{
   display:flex;
   justify-content:center;
   gap:12px;
   flex-wrap:wrap;
 }
-
 @media(max-width:1024px){
   .info-grid{grid-template-columns:repeat(2,1fr)}
   .contact-form__grid{grid-template-columns:1fr;gap:30px}
   .contact-store__grid{grid-template-columns:1fr;gap:26px}
 }
-
 @media(max-width:600px){
   .contact-info{padding:46px 0 52px}
   .info-grid{grid-template-columns:1fr;gap:12px}
   .info-card{padding:22px 20px 24px}
   .info-card__icon{margin-bottom:13px}
-
   .contact-form-section{padding:46px 0 52px}
   .contact-form{padding:22px 20px 22px}
   .form-field{margin-bottom:15px}
-
   .contact-store{padding:46px 0}
   .contact-map,
   .contact-map__placeholder{min-height:250px}
   .contact-map__placeholder{padding:26px 22px}
-
   .contact-faq{padding:48px 0 54px}
   .faq-item summary{padding:16px 18px;font-size:14.5px}
   .faq-item__body{padding:0 18px 18px}
-
   .contact-cta{padding:52px 0 58px}
   .contact-cta p{font-size:14.5px;margin-bottom:26px}
   .contact-cta__actions{flex-direction:column;align-items:stretch}

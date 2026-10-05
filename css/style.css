@@ -667,3 +667,14 @@
       .footer-links{flex-wrap:wrap}
       .copyright{text-align:left}
     }
+
+    /* 320px: the 14px wordmark + the two 40px icon buttons + nav gaps
+       total ~338px, but the container is only 296px wide, so the nav
+       pushed the page into a horizontal scrollbar. Shrink the wordmark
+       and close the gaps just enough to fit. */
+    @media(max-width:360px){
+      .nav{gap:8px}
+      .logo{font-size:12px;gap:6px}
+      .logo-mark{width:28px;height:28px;font-size:10px}
+      .nav-actions{gap:8px}
+    }

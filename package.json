@@ -1,8 +1,8 @@
 {
-  "name": "speed-boost-nutrition-demo",
+  "name": "d-web-studio-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Static client demo for Speed Boost Nutrition (index.html + shop.html + categories.html + about.html + contact.html + admin.html). No runtime dependencies; Puppeteer is used only for the page smoke tests.",
+  "description": "Static client demo for D Web Studio (index.html + shop.html + categories.html + about.html + contact.html + admin.html). No runtime dependencies; Puppeteer is used only for the page smoke tests.",
   "scripts": {
     "test": "node test-index.js && node test-shop.js && node test-categories.js && node test-about.js && node test-contact.js && node test-admin.js",
     "test:index": "node test-index.js",

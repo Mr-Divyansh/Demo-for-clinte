@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Speed Boost Nutrition</title>
-  <meta name="description" content="Contact Speed Boost Nutrition in Sonipat, Haryana. Ask about a product, place an order or visit our physical store." />
+  <title>Contact Us | D Web Studio</title>
+  <meta name="description" content="Contact D Web Studio in Sonipat, Haryana. Ask about a product, place an order or visit our physical store." />
 
-  <!-- Shared homepage design system, shared inner-page components, then contact-only styles -->
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/contact.css" />
 
@@ -17,14 +16,12 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-
-  <!-- ================= HEADER (same as homepage) ================= -->
-  <header>
+    <header>
     <div class="container nav">
 
       <a class="logo" href="index.html">
-        <div class="logo-mark">SB</div>
-        SPEED <span>BOOST</span> NUTRITION
+        <div class="logo-mark">DW</div>
+        D WEB <span>STUDIO</span>
       </a>
 
       <nav class="nav-links" aria-label="Main">
@@ -36,8 +33,7 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- This page has no product list, so search hands over to the Shop page -->
-        <a class="icon-btn" href="shop.html" aria-label="Search products">
+                <a class="icon-btn" href="shop.html" aria-label="Search products">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
           </svg>
@@ -57,18 +53,9 @@
     </div>
   </header>
 
-
   <main id="main">
 
-    <!-- ================= HERO ================= -->
-    <!--
-      HERO IMAGE:
-      Put the Contact banner at   assets/contact-hero.jpg
-      Recommended: a dark, cinematic gym / training photo with empty space on
-      the left for the text. 1920x760 or larger.
-      Until the photo exists the dark gradient keeps the banner readable.
-    -->
-    <section class="page-hero" style="--page-hero-image:url('assets/contact-hero.jpg')">
+            <section class="page-hero" style="--page-hero-image:url('assets/contact-hero.jpg')">
       <div class="container page-hero__inner">
 
         <div class="page-hero__copy">
@@ -92,16 +79,7 @@
 
       </div>
     </section>
-<!-- ================= CONTACT INFORMATION ================= -->
-    <!--
-      BUSINESS DETAILS ARE PLACEHOLDERS (rules.md 3).
-      The phone and WhatsApp numbers are NOT published because they have not
-      been verified by the business. They render as a "to be added" state and
-      are not links, so nothing fake or undialable is shown to a customer.
-      Replace each <span class="info-card__value--pending"> with the real
-      number once supplied, and turn it into a tel: / wa.me link.
-    -->
-    <section class="contact-info">
+        <section class="contact-info">
       <div class="container">
 
         <div class="section-head">
@@ -134,8 +112,7 @@
             </span>
 
             <h3>Call Us</h3>
-            <!-- PLACEHOLDER — business phone number not yet verified -->
-            <p class="info-card__value info-card__value--pending">Phone number to be added</p>
+                        <p class="info-card__value info-card__value--pending">Phone number to be added</p>
             <p class="info-card__note">Send a message below and we will call you back.</p>
           </article>
 
@@ -147,8 +124,7 @@
             </span>
 
             <h3>WhatsApp</h3>
-            <!-- PLACEHOLDER — WhatsApp number not yet verified -->
-            <p class="info-card__value info-card__value--pending">WhatsApp number to be added</p>
+                        <p class="info-card__value info-card__value--pending">WhatsApp number to be added</p>
             <p class="info-card__note">Number shared once confirmed by the store.</p>
           </article>
 
@@ -162,23 +138,14 @@
             </span>
 
             <h3>Instagram</h3>
-            <!-- PLACEHOLDER LINK — replace with the verified Instagram profile URL -->
-            <p class="info-card__value">@speedboostnutrition</p>
+                        <p class="info-card__value">@dwebstudio</p>
             <a class="info-card__link" href="#" target="_blank" rel="noopener noreferrer">Open profile &rarr;</a>
           </article>
 
         </div>
       </div>
     </section>
-<!-- ================= CONTACT FORM ================= -->
-    <!--
-      DEMO FORM — no backend yet.
-      `action` and `method` are intentionally absent so the form cannot post
-      anywhere. js/contact.js only shows an inline "not connected yet" notice
-      and never sends data (rules.md 1 — build what the business needs).
-      Wire it to the real endpoint when the contact flow is built.
-    -->
-    <section class="contact-form-section" id="contact-form">
+        <section class="contact-form-section" id="contact-form">
       <div class="container contact-form__grid">
 
         <div class="contact-form__intro">
@@ -199,8 +166,7 @@
           </ul>
         </div>
 
-        <!-- action/method removed on purpose: this form is a UI demo -->
-        <form class="contact-form" id="contactForm" novalidate>
+                <form class="contact-form" id="contactForm" novalidate>
           <div class="form-field">
             <label for="cfName">Name</label>
             <input type="text" id="cfName" name="name" autocomplete="name" placeholder="Your name" required />
@@ -231,8 +197,7 @@
 
           <button class="btn btn-primary form-submit" type="submit">Send Message</button>
 
-          <!-- Filled in by js/contact.js; aria-live so screen readers announce it -->
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
 
           <p class="form-note">
             Demo only &mdash; this form is not connected to a backend yet.
@@ -241,16 +206,7 @@
 
       </div>
     </section>
-<!-- ================= STORE LOCATION ================= -->
-    <!--
-      MAP: intentionally NOT embedded.
-      No third-party map iframe is used, because a real one would show a
-      fabricated pin at the wrong address (rules.md 3). This is a styled
-      placeholder box. To go live, replace .contact-map__placeholder with a
-      Google Maps embed for the verified address, or drop an
-      assets/contact-map.jpg screenshot of the location in.
-    -->
-    <section class="contact-store">
+        <section class="contact-store">
       <div class="container">
 
         <div class="section-head">
@@ -263,7 +219,7 @@
         <div class="contact-store__grid">
 
           <div class="contact-store__copy">
-            <h3>Speed Boost Nutrition</h3>
+            <h3>D Web Studio</h3>
 
             <p>
               Our shop is in Sonipat, Haryana. Walk in during store hours to see
@@ -285,8 +241,7 @@
               Full street address and map link to be added once verified.
             </p>
 
-            <!-- PLACEHOLDER LINK — replace with the verified address / map URL -->
-            <a class="btn btn-outline-dark" href="#" target="_blank" rel="noopener noreferrer">Get Directions &rarr;</a>
+                        <a class="btn btn-outline-dark" href="#" target="_blank" rel="noopener noreferrer">Get Directions &rarr;</a>
           </div>
 
           <div class="contact-map">
@@ -308,15 +263,7 @@
         </div>
       </div>
     </section>
-<!-- ================= FAQ / QUICK HELP ================= -->
-    <!--
-      Native <details>/<summary> gives keyboard support, correct semantics and
-      an aria-expanded state for free, so no JS is needed to expand these.
-      Answers state what the demo actually does today and link to the page that
-      covers the topic, rather than promising a support process that is not
-      built (rules.md 3 and 4).
-    -->
-    <section class="contact-faq">
+        <section class="contact-faq">
       <div class="container">
 
         <div class="contact-faq__head">
@@ -392,7 +339,6 @@
         </div>
       </div>
     </section>
-<!-- ================= CTA ================= -->
     <section class="contact-cta">
       <div class="container contact-cta__inner">
 
@@ -405,8 +351,7 @@
 
         <div class="contact-cta__actions">
           <a class="btn btn-primary" href="shop.html">Shop Now</a>
-          <!-- PLACEHOLDER LINK — replace with the verified Instagram profile URL -->
-          <a class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
+                    <a class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
         </div>
 
       </div>
@@ -414,16 +359,14 @@
 
   </main>
 
-
-  <!-- ================= FOOTER (same as homepage) ================= -->
-  <footer>
+    <footer>
     <div class="container">
 
       <div class="footer-top">
 
         <a class="logo" href="index.html">
-          <div class="logo-mark">SB</div>
-          SPEED <span>BOOST</span> NUTRITION
+          <div class="logo-mark">DW</div>
+          D WEB <span>STUDIO</span>
         </a>
 
         <nav class="footer-links" aria-label="Footer">
@@ -443,12 +386,11 @@
       </div>
 
       <div class="copyright">
-        &copy; 2026 Speed Boost Nutrition. All rights reserved.
+        &copy; 2026 D Web Studio. All rights reserved.
       </div>
 
     </div>
   </footer>
-
 
   <script src="js/contact.js"></script>
 

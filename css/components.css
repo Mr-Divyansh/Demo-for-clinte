@@ -1,27 +1,14 @@
-/* ==========================================================================
-   SPEED BOOST NUTRITION — SHARED INNER-PAGE COMPONENTS
-   --------------------------------------------------------------------------
-   Loaded AFTER css/style.css on every page that is not the homepage:
 
-       shop.html        -> style.css -> components.css -> shop.css
-       categories.html   -> style.css -> components.css -> categories.css
 
-   Anything in this file is used by more than one page, so the pages cannot
-   drift apart visually. Page-specific rules stay in their own stylesheet.
-   ========================================================================== */
-
-/* ---------- Visible keyboard focus (rules.md 9) ---------- */
 :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
 :focus:not(:focus-visible){outline:none}
 
-/* ---------- Screen-reader-only helper ---------- */
 .sr-only{
   position:absolute;width:1px;height:1px;
   padding:0;margin:-1px;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
-/* ---------- Skip link ---------- */
 .skip-link{
   position:absolute;top:8px;left:8px;z-index:300;
   transform:translateY(-200%);
@@ -32,20 +19,6 @@
 }
 .skip-link:focus{transform:translateY(0)}
 
-/* ==========================================================================
-   PAGE HERO (inner-page banner)
-   --------------------------------------------------------------------------
-   style.css sets `section{padding:70px 0}` — reset it, the padding is inside.
-
-   The photo is supplied by the page so the path stays next to its markup:
-
-     <section class="page-hero"
-              style="--page-hero-image:url('assets/shop-hero.jpg')">
-
-   Recommended image: 1920x760 or larger, dark cinematic gym / athlete photo
-   with empty space on the left for the text. Until the photo exists the dark
-   gradient keeps the banner readable.
-   ========================================================================== */
 .page-hero{
   padding:0;
   position:relative;
@@ -90,7 +63,6 @@
   margin-bottom:22px;
 }
 
-/* ---------- Breadcrumb ---------- */
 .breadcrumb{
   display:flex;align-items:center;gap:9px;flex-wrap:wrap;
   font-size:12px;font-weight:700;color:#aeb8c1;
@@ -100,11 +72,6 @@
 .breadcrumb .sep{color:#5b646d}
 .breadcrumb [aria-current]{color:#fff}
 
-/* ==========================================================================
-   DARK DELIVERY / TRUST STRIP
-   Same .delivery-card component as the homepage, re-themed for the dark
-   header/footer flow of the inner pages.
-   ========================================================================== */
 .delivery-strip--dark{
   background:#080d12;
   color:#fff;
@@ -119,15 +86,11 @@
 .delivery-strip--dark .delivery-card strong{font-size:14.5px}
 .delivery-strip--dark .delivery-card span{opacity:.68}
 
-/* Three-up variant of the trust strip (Categories page) */
 .delivery-grid--3{grid-template-columns:repeat(3,1fr)}
 @media(max-width:768px){
   .delivery-grid--3{grid-template-columns:1fr}
 }
 
-/* ==========================================================================
-   INNER-PAGE RESPONSIVE
-   ========================================================================== */
 @media(max-width:600px){
   .page-hero__inner{padding:40px 0 36px}
   .page-hero h1{letter-spacing:-1.4px}

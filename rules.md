@@ -1,4 +1,4 @@
-# Speed Boost Nutrition — Development Rules
+# D Web Studio — Development Rules
 
 ## 1. Product Rule
 

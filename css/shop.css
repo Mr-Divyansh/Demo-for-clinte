@@ -1,14 +1,5 @@
-/* ==========================================================================
-   SHOP PAGE
-   Loaded AFTER css/style.css + css/components.css so every token, button, card,
-   inner-page banner and breadcrumb rule is reused as-is. Only shop-specific
-   layout, filtering, pagination and the mobile filter drawer live here.
-   ========================================================================== */
 
-/* ---------- Handwritten "Better Fuel Bigger Goals" flourish ----------
-   The banner itself is the shared .page-hero component. This flourish is
-   shop-only and desktop-only; it uses locally available script fonts so
-   nothing is downloaded. */
+
 .shop-hero__accent{
   display:none;
   flex:none;
@@ -25,9 +16,6 @@
 .shop-hero__accent em{font-style:normal;font-size:32px}
 .shop-hero__accent em:last-child{color:var(--blue)}
 
-/* ==========================================================================
-   LAYOUT — filter sidebar + results
-   ========================================================================== */
 .shop-wrap{padding:34px 0 74px}
 
 .shop-layout{
@@ -44,11 +32,8 @@
   padding:20px;
 }
 
-/* ==========================================================================
-   FILTER GROUPS
-   ========================================================================== */
 .filter-group{
-  /* Reset the default fieldset border — groups are separated by rules instead */
+
   border:0;
   margin:0;
   min-width:0;
@@ -113,7 +98,6 @@
   padding:2px 8px;
 }
 
-/* ---------- Price range (dual-handle slider) ---------- */
 .price-range{
   position:relative;
   height:34px;
@@ -133,8 +117,6 @@
   border-radius:999px;
 }
 
-/* Both inputs share the same box; only the thumbs receive pointer events so
-   the two handles can be dragged past each other without fighting. */
 .price-range__input{
   position:absolute;left:0;top:0;
   width:100%;height:34px;
@@ -176,7 +158,6 @@
   font-size:12.5px;font-weight:800;color:var(--text);
 }
 
-/* ---------- Clear filters ---------- */
 .filter-reset{
   margin-top:20px;
   width:100%;
@@ -191,9 +172,6 @@
 }
 .filter-reset:hover{border-color:var(--text);color:var(--blue)}
 
-/* ==========================================================================
-   RESULTS HEADER — "All Products" + Search + Sort By
-   ========================================================================== */
 .shop-head{
   display:flex;
   align-items:flex-end;
@@ -220,7 +198,6 @@
   flex-wrap:wrap;
 }
 
-/* ---------- Search ---------- */
 .shop-search{position:relative;width:232px;max-width:100%}
 .shop-search input{
   width:100%;height:42px;
@@ -244,7 +221,6 @@
   color:var(--muted);pointer-events:none;
 }
 
-/* ---------- Sort By ---------- */
 .shop-sort{
   display:flex;align-items:center;gap:8px;
   font-size:12.5px;font-weight:800;color:var(--muted);
@@ -264,9 +240,6 @@
 .shop-sort select:hover{border-color:#c3ccd4}
 .shop-sort select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,140,255,.18)}
 
-/* ==========================================================================
-   RESULT COUNT BAR + MOBILE FILTER TRIGGER
-   ========================================================================== */
 .shop-bar{
   display:flex;align-items:center;justify-content:space-between;
   gap:12px;flex-wrap:wrap;
@@ -278,7 +251,6 @@
 .shop-count{font-size:13px;font-weight:700;color:var(--muted)}
 .shop-count strong{color:var(--text)}
 
-/* Mobile filter trigger — hidden on desktop */
 .filter-toggle{
   display:none;
   align-items:center;gap:8px;
@@ -301,9 +273,6 @@
 }
 .filter-toggle__badge.is-active{display:flex}
 
-/* ==========================================================================
-   PRODUCT GRID
-   ========================================================================== */
 .shop-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -313,7 +282,6 @@
 .shop-grid .product-info{padding:13px}
 .shop-grid .product-info h3{font-size:14px}
 
-/* Category label above the product name */
 .product-cat{
   font-size:10.5px;
   font-weight:900;
@@ -323,7 +291,6 @@
   margin-bottom:5px;
 }
 
-/* Discounted price: current price + the old MRP struck through */
 .price-row{
   display:flex;
   align-items:baseline;
@@ -338,7 +305,6 @@
   color:var(--muted);
 }
 
-/* Stock dot (green = available, red = unavailable) */
 .stock::before{
   content:"";
   display:inline-block;
@@ -349,7 +315,6 @@
   vertical-align:1px;
 }
 
-/* Add to Cart is the only card action — full width, like the homepage */
 .shop-grid .add-cart{
   display:block;
   width:100%;
@@ -357,11 +322,9 @@
   padding:11px 6px;
 }
 
-/* Badge variants (the base .badge comes from style.css and is blue) */
 .badge--sale{background:#e0342b}
 .badge--new{background:var(--blue)}
 
-/* ---------- Sold out ---------- */
 .product-card.is-sold-out .product-image img{opacity:.42;filter:grayscale(1)}
 .product-card.is-sold-out .price{color:var(--muted)}
 .stock.is-sold-out::before{background:#c9443c}
@@ -371,9 +334,6 @@
   cursor:not-allowed;
 }
 
-/* ==========================================================================
-   EMPTY STATE
-   ========================================================================== */
 .shop-empty{
   display:none;
   text-align:center;
@@ -386,9 +346,6 @@
 .shop-empty h3{font-size:19px;margin-bottom:8px;letter-spacing:-.4px}
 .shop-empty p{color:var(--muted);font-size:13.5px;margin-bottom:20px}
 
-/* ==========================================================================
-   PAGINATION
-   ========================================================================== */
 .shop-pagination{
   display:flex;
   align-items:center;justify-content:center;
@@ -415,9 +372,6 @@
 }
 .page-btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* ==========================================================================
-   MOBILE FILTER DRAWER
-   ========================================================================== */
 .filter-drawer-head{
   display:none;
   align-items:center;justify-content:space-between;gap:12px;
@@ -444,9 +398,6 @@
 
 body.drawer-open{overflow:hidden}
 
-/* ==========================================================================
-   CART TOAST (demo feedback)
-   ========================================================================== */
 .shop-toast{
   position:fixed;
   left:50%;bottom:26px;
@@ -471,18 +422,11 @@ body.drawer-open{overflow:hidden}
   background:var(--blue);
 }
 
-/* ---------- Image fallback ---------- */
 .product-image img[data-fallback]{
   width:auto;height:auto;max-width:100%;
   margin:auto;
 }
 
-/* ==========================================================================
-   RESPONSIVE
-   rules.md 8 — verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375
-   ========================================================================== */
-
-/* Desktop: sticky inline sidebar + four-column product grid */
 @media(min-width:1025px){
   .shop-layout{grid-template-columns:246px minmax(0,1fr);gap:32px}
   .shop-filters{position:sticky;top:calc(72px + 22px)}
@@ -491,7 +435,6 @@ body.drawer-open{overflow:hidden}
   .shop-hero__accent{display:block}
 }
 
-/* Tablet and below: the sidebar becomes a slide-in drawer */
 @media(max-width:1024px){
   .shop-filters{
     position:fixed;
@@ -518,7 +461,7 @@ body.drawer-open{overflow:hidden}
 }
 
 @media(max-width:900px){
-  /* Keep the search + sort row from crowding the title */
+
   .shop-head{align-items:flex-start}
   .shop-head__actions{width:100%}
 }
@@ -558,14 +501,10 @@ body.drawer-open{overflow:hidden}
   .shop-toast.is-visible{transform:translateY(0)}
 }
 
-/* Keep long product names from breaking the 2-up mobile card */
 @media(max-width:400px){
   .shop-grid .product-info h3{
     font-size:12.5px;
     overflow-wrap:anywhere;
   }
 }
-
-
-
 

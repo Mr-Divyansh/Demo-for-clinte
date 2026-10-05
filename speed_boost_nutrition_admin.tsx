@@ -105,7 +105,7 @@ export default function AdminDashboard() {
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="h-16 flex items-center justify-between px-6 border-b border-slate-800">
-          <span className="text-white text-lg font-bold tracking-tight">Speed Boost<span className="text-blue-500">.</span></span>
+          <span className="text-white text-lg font-bold tracking-tight">D Web Studio<span className="text-blue-500">.</span></span>
           <button onClick={toggleSidebar} className="lg:hidden text-slate-400 hover:text-white">
             <X size={20} />
           </button>
@@ -483,7 +483,7 @@ export default function AdminDashboard() {
           </div>
           
           <footer className="mt-8 text-center text-sm text-slate-400 pb-4">
-            &copy; {new Date().getFullYear()} Speed Boost Nutrition. Admin Portal. Demo Data.
+            &copy; {new Date().getFullYear()} D Web Studio. Admin Portal. Demo Data.
           </footer>
         </main>
       </div>

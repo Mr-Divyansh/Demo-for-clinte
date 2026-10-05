@@ -1,21 +1,11 @@
-/* ==========================================================================
-   CATEGORIES PAGE
-   Loaded AFTER css/style.css + css/components.css, so the tokens, buttons,
-   header/footer, inner-page banner, breadcrumb and dark trust strip are all
-   reused as-is. Only the category grids and the featured block live here.
-   ========================================================================== */
 
-/* style.css styles .eyebrow for dark backgrounds — these sections are white */
+
 .cat-section .eyebrow,
 .cat-feature__copy .eyebrow,
 .cat-quick .eyebrow{color:#717980}
 
-/* The header search is a link here (this page has no product list to filter) */
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
-/* ==========================================================================
-   CATEGORY GRID
-   ========================================================================== */
 .cat-section{padding:56px 0 8px}
 
 .cat-grid{
@@ -32,7 +22,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   overflow:hidden;
   color:#fff;
   border:1px solid var(--border);
-  /* Doubles as the placeholder when the photo has not been supplied yet */
+
   background:linear-gradient(140deg,#16212c 0%,#0b1117 60%,#070b0f 100%);
 }
 
@@ -45,7 +35,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 }
 .cat-card:hover .cat-card__img{transform:scale(1.06);opacity:.92}
 
-/* Readability scrim so white text always clears WCAG contrast */
 .cat-card::after{
   content:"";
   position:absolute;
@@ -101,9 +90,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 }
 .cat-card:hover .cat-card__arrow{transform:translateX(4px);background:#0b7be8}
 
-/* ==========================================================================
-   FEATURED CATEGORY
-   ========================================================================== */
 .cat-feature{padding:64px 0}
 
 .cat-feature__grid{
@@ -156,9 +142,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:#414c56;
 }
 
-/* ==========================================================================
-   POPULAR CATEGORIES (quick links)
-   ========================================================================== */
 .cat-quick{padding:56px 0 66px}
 
 .quick-grid{
@@ -213,10 +196,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   white-space:nowrap;
 }
 
-/* ==========================================================================
-   RESPONSIVE
-   rules.md 8 — verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375
-   ========================================================================== */
 @media(max-width:1024px){
   .cat-grid{grid-template-columns:repeat(3,1fr)}
   .cat-card{height:240px}

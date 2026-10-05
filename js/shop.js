@@ -1,27 +1,6 @@
-/* =============================================================================
-   SPEED BOOST NUTRITION — SHOP PAGE
-   -----------------------------------------------------------------------------
-   Front-end only demo. There is no backend, database, cart, payment or order
-   service anywhere in this file.
-
-   The catalogue below is SAMPLE DATA (placeholder names, prices, brands and
-   image paths). It must be replaced with verified business data before launch
-   (rules.md 3 — Business Accuracy, rules.md 15 — Demo Rule).
-
-   Everything is written as plain ES5-style functions so this file can later be
-   swapped for a real API call without rebuilding the page.
-   ============================================================================= */
 
 'use strict';
 
-/* ---------------------------------------------------------------------------
-   1. SAMPLE PRODUCT DATA  (replace with real catalogue data / API later)
-   ---------------------------------------------------------------------------
-   image : replaceable local path — drop the real photo at exactly this path
-   brand : placeholder labels — replace with the real brands the store stocks
-   mrp   : optional "was" price, only shown when it is higher than price
-   added : demo ordering value used by the "Newest" sort
-   --------------------------------------------------------------------------- */
 var PRODUCTS = [
   { id:'p01', name:'Whey Protein',           category:'protein',     brand:'brand-1', meta:'2.2 kg · Chocolate',  price:4499, inStock:true,  badge:'Bestseller', image:'assets/products/whey-protein.jpg',         added:4  },
   { id:'p02', name:'Creatine Monohydrate',   category:'creatine',    brand:'brand-2', meta:'300 g',               price:1299, inStock:true,  badge:'',           image:'assets/products/creatine.jpg',             added:11 },
@@ -37,7 +16,6 @@ var PRODUCTS = [
   { id:'p12', name:'Whey Isolate',           category:'protein',     brand:'brand-1', meta:'1 kg · Chocolate',    price:5499, inStock:true,  badge:'Bestseller', image:'assets/products/whey-isolate.jpg',         added:12 }
 ];
 
-/* Category keys -> the ?category= values used by the homepage links */
 var CATEGORY_LABELS = {
   'protein'     : 'Protein',
   'creatine'    : 'Creatine',
@@ -46,7 +24,6 @@ var CATEGORY_LABELS = {
   'other'       : 'Other Supplements'
 };
 
-/* Placeholder brand labels — replace with the real brands once confirmed */
 var BRAND_LABELS = {
   'brand-1' : 'Brand 1',
   'brand-2' : 'Brand 2',
@@ -59,17 +36,12 @@ var AVAILABILITY_LABELS = [
   ['sold-out', 'Out of Stock']
 ];
 
-/* Price range slider bounds (rupees) */
 var PRICE_MIN  = 0;
 var PRICE_MAX  = 5000;
 var PRICE_STEP = 100;
 
-/* Products per page — pagination is derived from this, never hard-coded */
 var PER_PAGE = 8;
 
-/* ---------------------------------------------------------------------------
-   2. STATE
-   --------------------------------------------------------------------------- */
 var state = {
   categories   : [],
   brands       : [],
@@ -82,9 +54,6 @@ var state = {
   cartCount    : 0
 };
 
-/* ---------------------------------------------------------------------------
-   3. HELPERS
-   --------------------------------------------------------------------------- */
 function $(sel, root){ return (root || document).querySelector(sel); }
 function $$(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
@@ -100,11 +69,6 @@ function escapeHtml(str){
     .replace(/"/g, '&quot;');
 }
 
-/* ---------------------------------------------------------------------------
-   4. IMAGE PLACEHOLDER
-   Until the real product photography is dropped into assets/products/, every
-   card falls back to a clean inline SVG so the grid never looks broken.
-   --------------------------------------------------------------------------- */
 function fallbackLabel(name){
   var clean = String(name).replace(/[^A-Za-z0-9 ()+-]/g, '').trim();
   return clean || 'Product';
@@ -128,11 +92,6 @@ function imageFallback(name){
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg).replace(/'/g, '%27');
 }
 
-/* ---------------------------------------------------------------------------
-   5. FILTER PIPELINE
-   Every dimension is a plain predicate so a backend can replace the array
-   filter later without touching the rendering code.
-   --------------------------------------------------------------------------- */
 function matchesSearch(product, term){
   if(!term){ return true; }
 
@@ -144,8 +103,7 @@ function matchesSearch(product, term){
 
 function matchesPrice(product){
   if(product.price < state.priceMin){ return false; }
-  /* A max at the top of the slider means "no upper limit" (₹5,000+) */
-  if(state.priceMax < PRICE_MAX && product.price > state.priceMax){ return false; }
+    if(state.priceMax < PRICE_MAX && product.price > state.priceMax){ return false; }
   return true;
 }
 
@@ -187,31 +145,23 @@ function getFilteredProducts(){
       list.sort(function(a, b){ return b.added - a.added; });
       break;
     default:
-      /* popularity — keep catalogue order */
-      break;
+            break;
   }
 
   return list;
 }
 
-/* ---------------------------------------------------------------------------
-   6. FACET COUNTS
-   How many products each option would return, taking every OTHER active
-   filter into account (the usual e-commerce facet behaviour).
-   --------------------------------------------------------------------------- */
 function countForFacet(facet, value){
   return PRODUCTS.filter(function(product){
 
-    /* 1. the option itself must match */
-    if(facet === 'category' && product.category !== value){ return false; }
+        if(facet === 'category' && product.category !== value){ return false; }
     if(facet === 'brand' && product.brand !== value){ return false; }
     if(facet === 'availability'){
       var wantsInStock = value === 'in-stock';
       if(wantsInStock !== !!product.inStock){ return false; }
     }
 
-    /* 2. every OTHER active facet must also match */
-    if(!matchesSearch(product, state.search)){ return false; }
+        if(!matchesSearch(product, state.search)){ return false; }
 
     if(facet !== 'category' &&
        state.categories.length &&
@@ -236,9 +186,6 @@ function countForFacet(facet, value){
   }).length;
 }
 
-/* ---------------------------------------------------------------------------
-   7. FORM <-> STATE
-   --------------------------------------------------------------------------- */
 function readCheckboxGroup(form, name){
   return $$('input[name="' + name + '"]:checked', form).map(function(input){
     return input.value;
@@ -272,14 +219,12 @@ function syncPriceUI(){
       : formatPrice(state.priceMax);
   }
 
-  /* Keep the lower handle grabbable when both sit at the same end */
-  minInput.classList.toggle(
+    minInput.classList.toggle(
     'price-range__input--top',
     state.priceMin >= PRICE_MAX - PRICE_STEP
   );
 }
 
-/* The two handles may never cross: whichever one moved is clamped. */
 function clampPriceHandles(moved){
   var minInput = $('#priceMin');
   var maxInput = $('#priceMax');
@@ -315,11 +260,6 @@ function readFiltersFromForm(){
   }
 }
 
-/* ---------------------------------------------------------------------------
-   8. RENDER — FILTER OPTIONS
-   The option lists are generated from the catalogue so a real API response
-   can drive them later without editing shop.html.
-   --------------------------------------------------------------------------- */
 function filterOptionHtml(name, value, label, count, checked){
   return '' +
     '<label class="filter-opt">' +
@@ -382,10 +322,6 @@ function renderFilterBadge(){
   badge.classList.toggle('is-active', count > 0);
 }
 
-/* ---------------------------------------------------------------------------
-   9. RENDER — PRODUCT CARDS
-   Uses the homepage .product-card styling so both pages stay identical.
-   --------------------------------------------------------------------------- */
 function badgeClass(badge){
   if(badge === 'Sale'){ return 'badge badge--sale'; }
   if(badge === 'New'){ return 'badge badge--new'; }
@@ -464,9 +400,6 @@ function renderCount(list, start, shown){
     '</strong> of <strong>' + list.length + '</strong> products';
 }
 
-/* ---------------------------------------------------------------------------
-   10. RENDER — PAGINATION  (driven by PER_PAGE, ready for a real API)
-   --------------------------------------------------------------------------- */
 function renderPagination(totalPages){
   var nav = $('#shopPagination');
 
@@ -501,11 +434,6 @@ function renderAll(){
   renderFilterBadge();
 }
 
-/* ---------------------------------------------------------------------------
-   11. FILTER RESET
-   Clears every checkbox, the price range and the search box so the customer
-   always has one obvious way back to the full catalogue.
-   --------------------------------------------------------------------------- */
 function resetFilters(){
   var form = $('#filterForm');
 
@@ -525,9 +453,6 @@ function resetFilters(){
   renderAll();
 }
 
-/* ---------------------------------------------------------------------------
-   12. MOBILE FILTER DRAWER
-   --------------------------------------------------------------------------- */
 var lastFocused = null;
 
 function isDrawerMode(){
@@ -559,9 +484,6 @@ function closeDrawer(){
   lastFocused = null;
 }
 
-/* ---------------------------------------------------------------------------
-   13. CART FEEDBACK  (demo only — no cart service exists yet)
-   --------------------------------------------------------------------------- */
 var toastTimer = null;
 
 function addToCart(name){
@@ -584,9 +506,6 @@ function addToCart(name){
   }, 2400);
 }
 
-/* ---------------------------------------------------------------------------
-   14. DEEP LINKS  (index.html category cards -> shop.html?category=protein)
-   --------------------------------------------------------------------------- */
 function initStateFromUrl(){
   var params = new URLSearchParams(window.location.search);
 
@@ -608,15 +527,10 @@ function initStateFromUrl(){
   }
 }
 
-/* ---------------------------------------------------------------------------
-   15. EVENT WIRING
-   --------------------------------------------------------------------------- */
 function bindEvents(){
   var form = $('#filterForm');
 
-  /* Checkboxes and the price handles all fire `input`.
-     Ranges are handled first so dragging stays responsive. */
-  form.addEventListener('input', function(e){
+    form.addEventListener('input', function(e){
     var el = e.target;
     if(!el){ return; }
 
@@ -639,13 +553,11 @@ function bindEvents(){
     renderAll();
   });
 
-  /* Reset buttons (sidebar + empty state) */
-  $$('[data-reset-filters]').forEach(function(btn){
+    $$('[data-reset-filters]').forEach(function(btn){
     btn.addEventListener('click', resetFilters);
   });
 
-  /* Search */
-  var searchTimer = null;
+    var searchTimer = null;
   $('#shopSearch').addEventListener('input', function(e){
     var value = e.target.value.toLowerCase();
 
@@ -657,8 +569,7 @@ function bindEvents(){
     }, 200);
   });
 
-  /* Header search icon focuses the shop search field */
-  var focusSearch = $('[data-focus-search]');
+    var focusSearch = $('[data-focus-search]');
   if(focusSearch){
     focusSearch.addEventListener('click', function(){
       var field = $('#shopSearch');
@@ -667,15 +578,13 @@ function bindEvents(){
     });
   }
 
-  /* Sort By */
-  $('#shopSort').addEventListener('change', function(e){
+    $('#shopSort').addEventListener('change', function(e){
     state.sort = e.target.value;
     state.page = 1;
     renderProducts();
   });
 
-  /* Pagination (event delegation) */
-  $('#shopPagination').addEventListener('click', function(e){
+    $('#shopPagination').addEventListener('click', function(e){
     var btn = e.target.closest('[data-page]');
     if(!btn || btn.disabled){ return; }
 
@@ -686,21 +595,18 @@ function bindEvents(){
     window.scrollTo({ top: top, behavior:'smooth' });
   });
 
-  /* Add to cart (event delegation on the grid) */
-  $('#shopGrid').addEventListener('click', function(e){
+    $('#shopGrid').addEventListener('click', function(e){
     var btn = e.target.closest('[data-add-to-cart]');
     if(!btn){ return; }
     addToCart(btn.getAttribute('data-name'));
   });
 
-  /* Drawer open / close */
-  $('[data-open-filters]').addEventListener('click', openDrawer);
+    $('[data-open-filters]').addEventListener('click', openDrawer);
   $$('[data-close-filters]').forEach(function(el){
     el.addEventListener('click', closeDrawer);
   });
 
-  /* Escape closes the drawer */
-  document.addEventListener('keydown', function(e){
+    document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' || e.keyCode === 27){
       if($('#shopFilters').classList.contains('is-open')){
         closeDrawer();
@@ -708,17 +614,13 @@ function bindEvents(){
     }
   });
 
-  /* Returning to desktop width resets drawer state */
-  window.addEventListener('resize', function(){
+    window.addEventListener('resize', function(){
     if(!isDrawerMode() && $('#shopFilters').classList.contains('is-open')){
       closeDrawer();
     }
   });
 }
 
-/* ---------------------------------------------------------------------------
-   16. START
-   --------------------------------------------------------------------------- */
 function init(){
   initStateFromUrl();
   bindEvents();
@@ -730,10 +632,4 @@ if(document.readyState === 'loading'){
 } else {
   init();
 }
-
-
-
-
-
-
 

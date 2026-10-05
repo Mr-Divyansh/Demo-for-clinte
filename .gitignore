@@ -16,6 +16,7 @@ fix-encoding.js
 
 # Test output logs
 *-out.txt
+_msg.txt
 
 # OS / editor clutter
 .DS_Store

@@ -1,4 +1,4 @@
-# Speed Boost Nutrition — Development Phases
+# D Web Studio — Development Phases
 
 ## Phase 0 — Product Lock
 

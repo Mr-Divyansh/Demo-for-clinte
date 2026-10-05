@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard | Speed Boost Nutrition</title>
-  <meta name="description" content="Admin dashboard UI for Speed Boost Nutrition. Sales, orders, products and customer overview." />
+  <title>Admin Dashboard | D Web Studio</title>
+  <meta name="description" content="Admin dashboard UI for D Web Studio. Sales, orders, products and customer overview." />
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Shared design system, shared inner-page components, then admin-only styles -->
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/admin.css" />
 
@@ -18,29 +17,14 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!--
-    ADMIN DASHBOARD - UI ONLY
-    ------------------------------------------------------------------
-    No backend, no database, no authentication and no API calls are
-    implemented here. Every figure, order and product on this page is
-    SAMPLE DATA loaded from js/admin-data.js, exactly as phases.md
-    requires ("Use clearly marked demo/sample data", rule 15).
-
-    Statuses match architecture.md sections 6 and 7:
-      Order:    PENDING / CONFIRMED / PROCESSING / SHIPPED / DELIVERED / CANCELLED
-      Payment:  COD / PAID / PENDING / FAILED / REFUNDED
-    Cancelled orders are excluded from sales totals (architecture.md 11).
-  -->
-
   <div class="admin-shell">
 
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="sidebar" id="sidebar">
+        <aside class="sidebar" id="sidebar">
       <div class="sidebar__brand">
         <a class="admin-logo" href="index.html">
-          <span class="admin-logo__mark" aria-hidden="true">SB</span>
+          <span class="admin-logo__mark" aria-hidden="true">DW</span>
           <span class="admin-logo__text">
-            SPEED <span>BOOST</span><br />
+            D WEB <span>STUDIO</span><br />
             <small>Admin Panel</small>
           </span>
         </a>
@@ -154,14 +138,11 @@
       </div>
     </aside>
 
-    <!-- Overlay behind the drawer on tablet/mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+        <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
-    <!-- ================= MAIN COLUMN ================= -->
-    <div class="admin-main">
+        <div class="admin-main">
 
-      <!-- ================= TOP HEADER ================= -->
-      <header class="topbar">
+            <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu" type="button" id="sidebarToggle"
                   aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
@@ -204,18 +185,13 @@
       </header>
 
       <main class="admin-content" id="main">
-<!-- Demo-data notice: phases.md rule 15 requires sample data to be clearly
-             identifiable, so the owner never mistakes it for real figures. -->
         <p class="demo-note">
           <strong>Demo dashboard.</strong>
           All figures, orders and customers below are sample data for layout
           review only &mdash; they are not real business data.
         </p>
 
-        <!-- ================= KPI CARDS ================= -->
-        <!-- Priority order from design.md 13: what sold, how much, how many,
-             what needs attention. Pending Orders is the actionable one. -->
-        <section class="kpi-grid" aria-label="Key performance indicators">
+                        <section class="kpi-grid" aria-label="Key performance indicators">
 
           <article class="kpi-card">
             <div class="kpi-card__top">
@@ -302,7 +278,6 @@
           </article>
 
         </section>
-<!-- ================= SALES OVERVIEW ================= -->
         <section class="panel panel--chart" aria-labelledby="salesHeading">
           <div class="panel__head">
             <div>
@@ -310,8 +285,7 @@
               <p class="panel__sub" id="salesRangeLabel">This month</p>
             </div>
 
-            <!-- Time filters. aria-pressed marks the active range (rules.md 9). -->
-            <div class="segmented" role="group" aria-label="Sales time range">
+                        <div class="segmented" role="group" aria-label="Sales time range">
               <button class="segmented__btn" type="button" data-range="today" aria-pressed="false">Today</button>
               <button class="segmented__btn" type="button" data-range="7d" aria-pressed="false">7 Days</button>
               <button class="segmented__btn" type="button" data-range="30d" aria-pressed="false">30 Days</button>
@@ -319,8 +293,7 @@
             </div>
           </div>
 
-          <!-- Sales summary, above the chart so the number reads first -->
-          <div class="chart-summary">
+                    <div class="chart-summary">
             <div>
               <p class="chart-summary__label">Total sales</p>
               <p class="chart-summary__value" data-chart="total">&mdash;</p>
@@ -332,9 +305,7 @@
             </div>
           </div>
 
-          <!-- Chart is drawn by js/admin.js into this container (plain SVG,
-               no chart library: rules.md 10 says do not add dependencies). -->
-          <div class="chart" id="salesChart" role="img" aria-label="Sales trend chart"></div>
+                    <div class="chart" id="salesChart" role="img" aria-label="Sales trend chart"></div>
 
           <p class="chart__legend">
             <span class="chart__legend-key" aria-hidden="true"></span>
@@ -342,9 +313,7 @@
           </p>
         </section>
 
-        <!-- ================= ORDER STATUS OVERVIEW ================= -->
-        <!-- Status names and the six stages come from architecture.md section 6. -->
-        <section class="panel panel--status" aria-labelledby="statusHeading">
+                        <section class="panel panel--status" aria-labelledby="statusHeading">
           <div class="panel__head">
             <div>
               <h2 class="panel__title" id="statusHeading">Order Status Overview</h2>
@@ -353,15 +322,12 @@
           </div>
 
           <div class="status-grid" id="statusGrid" role="list">
-            <!-- Populated from js/admin-data.js -->
-          </div>
+                      </div>
 
-          <!-- Proportional bar: how the six stages relate at a glance -->
-          <div class="status-bar" id="statusBar" role="img" aria-label="Order status distribution bar"></div>
+                    <div class="status-bar" id="statusBar" role="img" aria-label="Order status distribution bar"></div>
 
           <ul class="status-legend" id="statusLegend"></ul>
         </section>
-<!-- ================= RECENT ORDERS ================= -->
         <section class="panel panel--orders" aria-labelledby="ordersHeading">
           <div class="panel__head">
             <div>
@@ -371,10 +337,7 @@
             <a class="panel__action" href="#" aria-disabled="true">View all orders &rarr;</a>
           </div>
 
-          <!-- .table-scroll keeps the table readable on small screens instead
-               of squashing columns (design.md 16, admin is desktop-first but
-               must still work at 390px). -->
-          <div class="table-scroll">
+                    <div class="table-scroll">
             <table class="orders-table">
               <caption class="sr-only">Recent demo orders with customer, products, amount, payment, date and status</caption>
               <thead>
@@ -390,18 +353,15 @@
                 </tr>
               </thead>
               <tbody id="ordersBody">
-                <!-- Populated from js/admin-data.js -->
-              </tbody>
+                              </tbody>
             </table>
           </div>
 
-          <!-- Empty state (design.md 15) -->
-          <div class="empty-state" id="ordersEmpty" hidden>
+                    <div class="empty-state" id="ordersEmpty" hidden>
             <p class="empty-state__title">No orders yet</p>
             <p class="empty-state__text">New orders will appear here as customers check out.</p>
           </div>
         </section>
-<!-- ================= TOP SELLING PRODUCTS ================= -->
         <section class="panel panel--products" aria-labelledby="topProductsHeading">
           <div class="panel__head">
             <div>
@@ -411,8 +371,7 @@
           </div>
 
           <ol class="product-list" id="topProductsList">
-            <!-- Populated from js/admin-data.js -->
-          </ol>
+                      </ol>
 
           <div class="empty-state" id="productsEmpty" hidden>
             <p class="empty-state__title">No sales yet</p>
@@ -420,8 +379,7 @@
           </div>
         </section>
 
-        <!-- ================= ATTENTION / NOTIFICATIONS ================= -->
-        <section class="panel panel--attention" aria-labelledby="attentionHeading">
+                <section class="panel panel--attention" aria-labelledby="attentionHeading">
           <div class="panel__head">
             <div>
               <h2 class="panel__title" id="attentionHeading">Needs Attention</h2>
@@ -430,18 +388,16 @@
           </div>
 
           <ul class="alert-list" id="alertList">
-            <!-- Populated from js/admin-data.js -->
-          </ul>
+                      </ul>
 
           <div class="empty-state" id="alertsEmpty" hidden>
             <p class="empty-state__title">Nothing pending</p>
             <p class="empty-state__text">You are all caught up right now.</p>
           </div>
         </section>
-<!-- ================= FOOTER ================= -->
         <footer class="admin-foot">
           <p>
-            Speed Boost Nutrition Admin &mdash; demo interface. No live data is
+            D Web Studio Admin &mdash; demo interface. No live data is
             connected.
           </p>
           <p class="admin-foot__note">
@@ -450,9 +406,7 @@
         </footer>
 
       </main>
-    </div><!-- /.admin-main -->
-  </div><!-- /.admin-shell -->
-
+    </div>  </div>
   <script src="js/admin-data.js"></script>
   <script src="js/admin.js"></script>
 

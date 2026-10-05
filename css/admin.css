@@ -1,27 +1,13 @@
-/* ==========================================================================
-   ADMIN DASHBOARD
-   --------------------------------------------------------------------------
-   Loaded AFTER css/style.css + css/components.css.
 
-   The tokens, buttons, a11y helpers and focus rings are reused from the shared
-   stylesheets, so the admin panel looks like the same product as the customer
-   site (same --blue, same radius, same Inter stack). Only the dashboard's own
-   shell, cards, table, chart and badges live here.
-
-   Layout is desktop-first (design.md 16) and collapses at 1024px / 768px.
-   ========================================================================== */
 
 .admin-body{
   background:var(--soft);
-  /* The dashboard owns the full viewport width, not the 1180px container. */
+
   color:var(--text);
 }
 
 .admin-body a{color:inherit}
 
-/* ==========================================================================
-   SHELL — fixed sidebar + scrolling main column
-   ========================================================================== */
 .admin-shell{
   display:flex;
   min-height:100vh;
@@ -88,7 +74,6 @@
   margin-top:2px;
 }
 
-/* Close button only exists in the mobile drawer */
 .sidebar__close{
   display:none;
   background:rgba(255,255,255,.08);
@@ -144,7 +129,6 @@
 
 .sidebar__link:hover{background:rgba(255,255,255,.07);color:#fff}
 
-/* Only the real current page gets the filled active treatment */
 .sidebar__link.is-active,
 .sidebar__link[aria-current="page"]{
   background:var(--blue);
@@ -180,7 +164,6 @@
   line-height:1.4;
 }
 
-/* Overlay shown behind the drawer on tablet/mobile */
 .sidebar-overlay{
   position:fixed;
   inset:0;
@@ -197,9 +180,7 @@
   display:flex;
   flex-direction:column;
 }
-/* ==========================================================================
-   TOP HEADER
-   ========================================================================== */
+
 .topbar{
   position:sticky;
   top:0;
@@ -337,17 +318,13 @@
 
 .topbar__profile-text small{font-size:11.5px;color:var(--muted)}
 
-/* ==========================================================================
-   CONTENT AREA + DEMO NOTICE
-   ========================================================================== */
 .admin-content{
   flex:1;
   padding:24px 28px 34px;
   display:flex;
   flex-direction:column;
   gap:18px;
-  /* Without this, the wide orders table would stretch this column and push
-     the whole page sideways instead of scrolling inside .table-scroll. */
+
   min-width:0;
 }
 
@@ -363,12 +340,9 @@
 
 .demo-note strong{color:#5f4c0c}
 
-/* ==========================================================================
-   KPI CARDS
-   ========================================================================== */
 .kpi-grid{
   display:grid;
-  /* minmax(0,1fr) lets the cards shrink below their content width */
+
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:14px;
 }
@@ -427,14 +401,10 @@
 
 .kpi-card__period{font-size:12px;color:var(--muted)}
 
-/* The actionable card is visually distinct without turning into an alarm */
 .kpi-card--alert{border-color:#f0dfae;background:#fffdf7}
 
 .kpi-card--alert .kpi-card__icon{background:rgba(201,138,18,.12);color:#c98a12}
 
-/* ==========================================================================
-   TREND INDICATORS
-   ========================================================================== */
 .trend{
   display:inline-flex;
   align-items:center;
@@ -452,15 +422,13 @@
 .trend--down{background:rgba(209,67,67,.12);color:#b93a3a}
 
 .trend--alert{background:rgba(201,138,18,.14);color:#9a6a0c}
-/* ==========================================================================
-   PANELS
-   ========================================================================== */
+
 .panel{
   background:#fff;
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:20px 22px 22px;
-  /* Let panels shrink below their content so .table-scroll can scroll. */
+
   min-width:0;
 }
 
@@ -499,17 +467,12 @@
 
 .panel__action[aria-disabled="true"]:hover{text-decoration:none}
 
-/* Sales chart and Order status sit side by side on wide screens */
 .admin-content > .panel--chart,
 .admin-content > .panel--orders{width:100%}
 
-/* Top products + attention share a row */
 .panel--products,
 .panel--attention{flex:1 1 0;min-width:0}
 
-/* ==========================================================================
-   SALES CHART
-   ========================================================================== */
 .segmented{
   display:inline-flex;
   gap:3px;
@@ -607,14 +570,9 @@
   background:var(--blue);
 }
 
-/* ==========================================================================
-   ORDER STATUS
-   ========================================================================== */
 .status-grid{
   display:grid;
-  /* minmax(0,1fr) not 1fr: 1fr tracks have an automatic minimum, so a long
-     label like "DELIVERED" would refuse to shrink and push the 6th card out
-     of the panel. */
+
   grid-template-columns:repeat(6,minmax(0,1fr));
   gap:10px;
 }
@@ -627,9 +585,6 @@
   min-width:0;
 }
 
-/* The dot is fixed-size; the label takes the rest of the row and wraps to a
-   second line when a long word like "PROCESSING" will not fit. Without
-   min-width:0 the flex item refuses to shrink and the word gets cut off. */
 .status-card__head{
   display:flex;
   align-items:flex-start;
@@ -708,14 +663,7 @@
 .status-legend__label{color:var(--text);font-weight:600}
 
 .status-legend__value{font-weight:900;color:var(--text)}
-/* ==========================================================================
-   ORDERS TABLE
-   ========================================================================== */
-/* Horizontal scrolling keeps every column readable on narrow screens instead
-   of squashing them (design.md 16).
-   Deliberately no negative-margin "bleed" here: pulling the scroller wider
-   than its parent made it overflow the viewport at 768px and below. Staying
-   inside the panel padding is the safe, predictable choice. */
+
 .table-scroll{
   overflow-x:auto;
   max-width:100%;
@@ -773,7 +721,6 @@
 
 .orders-table__date{color:var(--muted);white-space:nowrap}
 
-/* Status badges - the six states from architecture.md 6 */
 .status-badge{
   display:inline-block;
   padding:4px 10px;
@@ -790,7 +737,6 @@
 .status-badge--delivered{background:rgba(32,177,90,.13);color:#158a46}
 .status-badge--cancelled{background:rgba(209,67,67,.13);color:#b93a3a}
 
-/* Payment is a separate state from order status (architecture.md 7) */
 .pay-badge{
   display:inline-block;
   padding:4px 9px;
@@ -816,9 +762,7 @@
 }
 
 .btn-view:hover{border-color:var(--blue);color:var(--blue)}
-/* ==========================================================================
-   TOP SELLING PRODUCTS
-   ========================================================================== */
+
 .product-list{
   list-style:none;
   margin:0;
@@ -870,7 +814,6 @@
 
 .product-row__category{font-size:11.5px;color:var(--muted)}
 
-/* Relative share of units sold */
 .product-row__bar{
   display:block;
   height:4px;
@@ -901,9 +844,6 @@
   min-width:88px;
 }
 
-/* ==========================================================================
-   NEEDS ATTENTION
-   ========================================================================== */
 .alert-list{
   list-style:none;
   margin:0;
@@ -955,9 +895,6 @@
 
 .alert-row__chevron svg{width:15px;height:15px}
 
-/* ==========================================================================
-   EMPTY STATES (design.md 15)
-   ========================================================================== */
 .empty-state{
   padding:34px 20px;
   text-align:center;
@@ -972,9 +909,6 @@
 
 .empty-state__text{font-size:12.5px;color:var(--muted);margin-top:4px}
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
 .admin-foot{
   padding:16px 2px 0;
   font-size:12px;
@@ -982,13 +916,7 @@
 }
 
 .admin-foot__note{margin-top:3px}
-/* ==========================================================================
-   RESPONSIVE
-   design.md 16: admin is desktop-first but fully responsive.
-   Verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375.
-   ========================================================================== */
 
-/* ---------- Large desktop: give the two side panels their own row ---------- */
 @media(min-width:1180px){
   .admin-content{
     display:grid;
@@ -1000,13 +928,11 @@
   .admin-foot{grid-column:1 / -1}
   .kpi-grid,
   .panel--chart,
-  /* The six status cards need the full row: in the narrow 1.55fr column each
-     card was only ~96px, which clipped labels like "PROCESSING". */
+
   .panel--status,
   .panel--orders{grid-column:1 / -1}
 }
 
-/* ---------- Tablet: sidebar becomes a drawer ---------- */
 @media(max-width:1024px){
   .sidebar{
     transform:translateX(-100%);
@@ -1021,7 +947,6 @@
 
   .sidebar__close{display:grid}
 
-  /* Stop the page scrolling behind an open drawer */
   body.has-drawer-open{overflow:hidden}
 
   .admin-main{margin-left:0}
@@ -1039,7 +964,6 @@
   .topbar__search input{width:190px}
 }
 
-/* ---------- Small tablet / large phone ---------- */
 @media(max-width:768px){
   .topbar{
     flex-wrap:wrap;
@@ -1081,14 +1005,12 @@
 
   .kpi-card__label{font-size:10.5px}
 
-  /* Pending Orders is the action card: let it span for emphasis */
   .kpi-card--alert{grid-column:1 / -1}
 
   .status-grid{grid-template-columns:repeat(2,1fr);gap:8px}
 
   .panel{padding:16px 15px 18px}
 
-  /* Keep the table scrollable instead of hiding columns */
   .table-scroll{overflow-x:auto}
 
   .product-row{
@@ -1108,7 +1030,6 @@
   .panel__action{width:100%}
 }
 
-/* ---------- Phone ---------- */
 @media(max-width:420px){
   .kpi-grid{grid-template-columns:1fr}
 

@@ -31,7 +31,6 @@
       margin:auto;
     }
 
-    /* ================= HEADER ================= */
     header{
       position:sticky;
       top:0;
@@ -143,7 +142,6 @@
       font-weight:800;
     }
 
-    /* ================= HERO ================= */
     .hero{
       min-height:600px;
       position:relative;
@@ -153,15 +151,6 @@
         url("assets/hero.jpg") center/cover no-repeat;
       color:#fff;
     }
-
-    /*
-      HERO IMAGE:
-      Put your main hero image at:
-      assets/hero.jpg
-
-      Recommended: 1920x900 or larger.
-      If you don't have one yet, the dark background still keeps the layout usable.
-    */
 
     .hero::after{
       content:"";
@@ -269,7 +258,6 @@
       place-items:center;
     }
 
-    /* ================= SECTION ================= */
     section{padding:70px 0}
 
     .section-head{
@@ -298,7 +286,6 @@
       white-space:nowrap;
     }
 
-    /* ================= CATEGORIES ================= */
     .categories{
       display:grid;
       grid-template-columns:repeat(5,1fr);
@@ -342,7 +329,6 @@
     .category h3{font-size:15px}
     .category p{font-size:11px;color:#d7dce0}
 
-    /* ================= PRODUCTS ================= */
     .products{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -440,7 +426,6 @@
       cursor:pointer;
     }
 
-    /* ================= WHY US ================= */
     .why{
       background:#080d12;
       color:#fff;
@@ -486,7 +471,6 @@
     .why-item h3{font-size:14px;margin-bottom:3px}
     .why-item p{font-size:12px;color:#8e99a2}
 
-    /* ================= DELIVERY ================= */
     .delivery-strip{
       padding:18px 0;
       background:#fff;
@@ -517,7 +501,6 @@
     .delivery-card strong{display:block;font-size:14px}
     .delivery-card span{display:block;font-size:11px;opacity:.75}
 
-    /* ================= STORE ================= */
     .store{
       padding-top:20px;
     }
@@ -562,7 +545,6 @@
       font-weight:700;
     }
 
-    /* ================= INSTAGRAM ================= */
     .instagram{
       background:#fafbfc;
       padding-top:35px;
@@ -587,7 +569,6 @@
       object-fit:cover;
     }
 
-    /* ================= FOOTER ================= */
     footer{
       background:#080d12;
       color:#fff;
@@ -632,7 +613,6 @@
       padding-top:20px;
     }
 
-    /* ================= MOBILE ================= */
     @media(max-width:900px){
       .nav-links{display:none}
       .categories{grid-template-columns:repeat(2,1fr)}
@@ -640,7 +620,7 @@
       .why-grid,.store-grid{grid-template-columns:1fr}
       .why-list{grid-template-columns:1fr}
       .insta-grid{grid-template-columns:repeat(4,1fr)}
-      /* Prevent the logo + links + socials row from overflowing before 600px */
+
       .footer-top{flex-wrap:wrap}
       .socials{flex:none}
     }
@@ -649,7 +629,7 @@
       .container{width:min(var(--container),calc(100% - 24px))}
       .nav{height:64px;gap:12px}
       .login-btn{display:none}
-      /* The wordmark is nowrap, so scale it down to stop small-screen overflow */
+
       .logo{font-size:14px;gap:7px}
       .logo-mark{width:30px;height:30px;font-size:11px}
       .hero,.hero-content{min-height:650px}
@@ -668,10 +648,6 @@
       .copyright{text-align:left}
     }
 
-    /* 320px: the 14px wordmark + the two 40px icon buttons + nav gaps
-       total ~338px, but the container is only 296px wide, so the nav
-       pushed the page into a horizontal scrollbar. Shrink the wordmark
-       and close the gaps just enough to fit. */
     @media(max-width:360px){
       .nav{gap:8px}
       .logo{font-size:12px;gap:6px}

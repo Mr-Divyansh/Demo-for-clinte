@@ -1,20 +1,12 @@
-/* ==========================================================================
-   CONTACT PAGE
-   Loaded AFTER css/style.css + css/components.css, so the tokens, buttons,
-   header/footer, inner-page banner and breadcrumb are reused as-is. Only the
-   Contact-specific sections live here.
-   ========================================================================== */
 
-/* style.css styles .eyebrow for dark backgrounds — these sections are white */
+
 .contact-info .eyebrow,
 .contact-form-section .eyebrow,
 .contact-faq .eyebrow,
 .contact-store .eyebrow{color:#717980}
 
-/* The header search is a link here (this page has no product list to filter) */
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
-/* Dark outline button for use on the light sections */
 .btn-outline-dark{
   border-color:var(--border);
   color:var(--text);
@@ -22,9 +14,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 }
 .btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
 
-/* ==========================================================================
-   CONTACT INFORMATION — four cards
-   ========================================================================== */
 .contact-info{padding:66px 0 72px}
 
 .info-grid{
@@ -74,14 +63,12 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   margin-bottom:8px;
 }
 
-/* Unverified values read as pending, never as a real, dialable detail */
 .info-card__value--pending{
   color:#8a939c;
   font-weight:700;
   font-style:italic;
 }
 
-/* Pending cards get a dashed edge so the state is obvious at a glance */
 .info-card--pending{
   border-style:dashed;
   background:#fcfcfd;
@@ -101,9 +88,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 }
 
 .info-card__link:hover{text-decoration:underline}
-/* ==========================================================================
-   CONTACT FORM
-   ========================================================================== */
+
 .contact-form-section{
   background:#fafbfc;
   border-top:1px solid var(--border);
@@ -145,7 +130,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:#414c56;
 }
 
-/* The tick is built from a CSS escape so this file stays pure ASCII */
 .contact-form__points li::before{
   content:"\2713";
   position:absolute;
@@ -230,7 +214,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
 .form-submit{width:100%;margin-top:4px}
 
-/* Inline status message — shown by js/contact.js, empty until then */
 .form-status{
   font-size:13.5px;
   font-weight:700;
@@ -254,9 +237,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   color:var(--muted);
   margin-top:14px;
 }
-/* ==========================================================================
-   STORE LOCATION
-   ========================================================================== */
+
 .contact-store{padding:70px 0}
 
 .contact-store__grid{
@@ -299,7 +280,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
 .contact-store__pin svg{width:20px;height:20px}
 
-/* Honest note that the full address is not published yet */
 .contact-store__pending{
   font-size:13px;
   color:#8a939c;
@@ -357,9 +337,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   max-width:330px;
 }
 
-/* ==========================================================================
-   FAQ / QUICK HELP
-   ========================================================================== */
 .contact-faq{
   background:#fafbfc;
   border-top:1px solid var(--border);
@@ -418,12 +395,10 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   list-style:none;
 }
 
-/* Hide the default disclosure triangle in WebKit/Blink */
 .faq-item summary::-webkit-details-marker{display:none}
 
 .faq-item summary:hover{color:var(--blue)}
 
-/* Plus that rotates into a minus — the only motion on the page */
 .faq-item__icon{
   position:relative;
   flex:none;
@@ -470,9 +445,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   text-decoration:underline;
 }
 
-/* ==========================================================================
-   CTA
-   ========================================================================== */
 .contact-cta{
   background:#0e141b;
   color:#fff;
@@ -504,10 +476,7 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   gap:12px;
   flex-wrap:wrap;
 }
-/* ==========================================================================
-   RESPONSIVE
-   rules.md 8 — verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375
-   ========================================================================== */
+
 @media(max-width:1024px){
   .info-grid{grid-template-columns:repeat(2,1fr)}
   .contact-form__grid{grid-template-columns:1fr;gap:30px}

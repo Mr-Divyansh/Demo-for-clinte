@@ -1,4 +1,4 @@
-# PRD --- Speed Boost Nutrition
+# PRD --- D Web Studio
 
 **Product:** Nutrition E-Commerce Website + Admin Order Management
 System\
@@ -12,7 +12,7 @@ customers, products, and sales.
 
 ## 1. Product Goal
 
-Build a simple, professional website for Speed Boost Nutrition where
+Build a simple, professional website for D Web Studio where
 customers can browse supplements and place orders, while the owner can
 manage the complete order workflow from an admin dashboard.
 

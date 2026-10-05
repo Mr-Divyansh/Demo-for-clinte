@@ -41,7 +41,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('renders 4 "What We Offer" cards', offers === 4, `got ${offers}`);
 
   const whyCards = await page.$$eval('.why-card', els => els.length);
-  check('renders 4 "Why Speed Boost" points', whyCards === 4, `got ${whyCards}`);
+  check('renders 4 "Why D Web Studio" points', whyCards === 4, `got ${whyCards}`);
 
   const h1s = await page.$$eval('h1', els => els.length);
   check('exactly one <h1>', h1s === 1, `got ${h1s}`);
@@ -61,7 +61,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('stylesheet loaded (h1 >= 30px)', styled.h1size >= 30, `${styled.h1size}px`);
   check('desktop = 4-column offer grid', styled.offerCols === 4, `${styled.offerCols} cols`);
   check('desktop = 4-column why grid', styled.whyCols === 4, `${styled.whyCols} cols`);
-  check('"Why Speed Boost" is a dark section', styled.whyBg === 'rgb(8, 13, 18)', styled.whyBg);
+  check('"Why D Web Studio" is a dark section', styled.whyBg === 'rgb(8, 13, 18)', styled.whyBg);
 
   // ---- 3. Header / nav state ----
   const nav = await page.evaluate(() => {
@@ -99,7 +99,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     };
   });
   check('hero section padding reset to 0', hero.pad === 0, `${hero.pad}px`);
-  check('hero label = "ABOUT SPEED BOOST NUTRITION"', hero.eyebrow === 'About Speed Boost Nutrition', hero.eyebrow);
+  check('hero label = "ABOUT D WEB STUDIO"', hero.eyebrow === 'About D Web Studio', hero.eyebrow);
   check('hero H1 = "Fuel Your Fitness. Build Your Goals."',
     hero.h1 === 'Fuel Your Fitness. Build Your Goals.', hero.h1);
   check('hero H1 accent line is "Build Your Goals."', hero.accent === 'Build Your Goals.', hero.accent);
@@ -148,13 +148,13 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     offer.every(o => /^shop\.html\?category=[a-z-]+$/.test(o.href)),
     offer.map(o => o.href).join(' | '));
 
-  // ---- 7. Why Speed Boost ----
+  // ---- 7. Why D Web Studio ----
   const why = await page.evaluate(() => ({
     heading: document.querySelector('.about-why__head h2').textContent.replace(/\s+/g, ' ').trim(),
     eyebrow: document.querySelector('.about-why .eyebrow').textContent.trim(),
     titles: [...document.querySelectorAll('.why-card h3')].map(e => e.textContent.trim())
   }));
-  check('why label = "WHY SPEED BOOST"', why.eyebrow === 'Why Speed Boost', why.eyebrow);
+  check('why label = "WHY D WEB STUDIO"', why.eyebrow === 'Why D Web Studio', why.eyebrow);
   check('why heading = "More Than Just Supplements"', why.heading === 'More Than Just Supplements', why.heading);
   check('why covers quality, support, shopping and delivery',
     why.titles.join('|') ===
@@ -225,13 +225,13 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('uses the shared body font stack', /Inter|Arial|system-ui/i.test(identity.fontFamily), identity.fontFamily);
   check('reuses the shared .container width (1180px)', Math.round(identity.containerWidth) === 1180,
     `${Math.round(identity.containerWidth)}px`);
-  check('logo matches the other pages', identity.logoText === 'SB SPEED BOOST NUTRITION', identity.logoText);
+  check('logo matches the other pages', identity.logoText === 'DW D WEB STUDIO', identity.logoText);
   check('footer links match the other pages',
     identity.footerLinks === 'Home,Shop,Categories,About,Contact', identity.footerLinks);
   check('footer keeps Instagram, YouTube, Facebook',
     identity.footerSocials === 'Instagram,YouTube,Facebook', identity.footerSocials);
   check('copyright matches the other pages',
-    identity.copyright === String.fromCodePoint(0x00A9) + ' 2026 Speed Boost Nutrition. All rights reserved.',
+    identity.copyright === String.fromCodePoint(0x00A9) + ' 2026 D Web Studio. All rights reserved.',
     JSON.stringify(identity.copyright));
   // The header is deliberately slightly translucent over the page, the footer
   // solid — both must stay in the site's dark family.

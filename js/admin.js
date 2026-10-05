@@ -1,28 +1,10 @@
-/* ==========================================================================
-   SPEED BOOST NUTRITION - ADMIN DASHBOARD (UI ONLY)
-   --------------------------------------------------------------------------
-   Renders the demo data from js/admin-data.js into the dashboard markup and
-   handles the two interactions the UI needs: the sales time filters and the
-   responsive sidebar drawer.
-
-   Deliberately NOT implemented (out of scope for this task):
-     - no fetch / XMLHttpRequest / API calls
-     - no authentication or session handling
-     - no order status mutations, payments or business logic
-   The dashboard only reads a local static object, so nothing can leak and
-   nothing pretends to be a real system (rules.md 1, 10 and 11).
-
-   The chart is plain SVG built by hand. rules.md 10 says do not introduce
-   dependencies without a reason, so no charting library is used.
-   ========================================================================== */
 (function () {
   'use strict';
 
   var DATA = window.ADMIN_DATA;
-  if (!DATA) return; // Nothing to render without data.
+  if (!DATA) return; 
 
-  /* ---------------------------------------------------------------- utils */
-  function $(sel, root) { return (root || document).querySelector(sel); }
+    function $(sel, root) { return (root || document).querySelector(sel); }
   function el(tag, cls, text) {
     var node = document.createElement(tag);
     if (cls) node.className = cls;
@@ -30,7 +12,7 @@
     return node;
   }
 
-  // Builds an inline SVG node. Used for the chart, which is pure geometry.
+  
   var SVG_NS = 'http://www.w3.org/2000/svg';
   function svgEl(tag, attrs) {
     var node = document.createElementNS(SVG_NS, tag);
@@ -42,7 +24,7 @@
     return node;
   }
 
-  // Compact rupee formatting for axis labels (no paise, Indian grouping).
+  
   function shortMoney(n) {
     if (n >= 10000000) return (n / 10000000).toFixed(1) + 'Cr';
     if (n >= 100000) return (n / 100000).toFixed(1) + 'L';
@@ -56,8 +38,7 @@
     return Math.ceil(value / mag) * mag;
   }
 
-  /* ----------------------------------------------------------------- KPIs */
-  function renderKpis() {
+    function renderKpis() {
     var map = {
       sales: DATA.kpi.sales,
       orders: DATA.kpi.orders,
@@ -70,8 +51,7 @@
     });
   }
 
-  /* ------------------------------------------------- sales summary + tabs */
-  function renderSalesSummary(rangeKey) {
+    function renderSalesSummary(rangeKey) {
     var range = DATA.sales[rangeKey];
     if (!range) return;
 
@@ -90,14 +70,13 @@
     }
   }
 
-  /* ------------------------------------------------------- sales chart SVG */
-  function renderChart(rangeKey) {
+    function renderChart(rangeKey) {
     var host = $('#salesChart');
     var range = DATA.sales[rangeKey];
     if (!host || !range) return;
 
     var points = range.points;
-    var W = 760;          // viewBox width; CSS scales it to the container
+    var W = 760;          
     var H = 240;
     var padL = 54, padR = 16, padT = 16, padB = 34;
 
@@ -117,8 +96,7 @@
       focusable: 'false'
     });
 
-    /* ---- horizontal gridlines + y labels ---- */
-    var gridSteps = 4;
+        var gridSteps = 4;
     for (var g = 0; g <= gridSteps; g++) {
       var value = (max / gridSteps) * g;
       var gy = y(value);
@@ -137,8 +115,7 @@
       svg.appendChild(label);
     }
 
-    /* ---- area fill under the line ---- */
-    var linePoints = points.map(function (v, i) { return x(i) + ',' + y(v); });
+        var linePoints = points.map(function (v, i) { return x(i) + ',' + y(v); });
 
     var areaPath = 'M' + linePoints.join(' L') +
       ' L' + x(points.length - 1) + ',' + (padT + innerH) +
@@ -148,8 +125,7 @@
       d: areaPath, fill: '#168cff', 'fill-opacity': '0.1', stroke: 'none'
     }));
 
-    /* ---- the trend line itself ---- */
-    svg.appendChild(svgEl('polyline', {
+        svg.appendChild(svgEl('polyline', {
       points: linePoints.join(' '),
       fill: 'none',
       stroke: '#168cff',
@@ -159,8 +135,7 @@
       'vector-effect': 'non-scaling-stroke'
     }));
 
-    /* ---- x labels: first, middle and last only, so they never collide ---- */
-    var labelIdx = points.length > 12
+        var labelIdx = points.length > 12
       ? [0, Math.floor((points.length - 1) / 2), points.length - 1]
       : points.map(function (_, i) { return i; });
 
@@ -176,8 +151,7 @@
       svg.appendChild(t);
     });
 
-    /* ---- last-point marker, so the latest value is obvious ---- */
-    svg.appendChild(svgEl('circle', {
+        svg.appendChild(svgEl('circle', {
       cx: x(points.length - 1), cy: y(points[points.length - 1]), r: '4.5',
       fill: '#168cff', stroke: '#fff', 'stroke-width': '2'
     }));
@@ -186,7 +160,7 @@
     host.appendChild(svg);
   }
 
-  // Small readable x-axis captions per range.
+  
   function xLabelFor(rangeKey, i) {
     if (rangeKey === 'today') {
       return ['9a', '11a', '1p', '3p', '5p', '7p', '9p', '11p'][i] || '';
@@ -218,7 +192,6 @@
     });
     setRange('month');
   }
-/* --------------------------------------------------- order status block */
   function renderStatus() {
     var grid = $('#statusGrid');
     var bar = $('#statusBar');
@@ -228,8 +201,7 @@
     var list = DATA.orderStatus;
     var total = list.reduce(function (sum, s) { return sum + s.count; }, 0);
 
-    /* ---- compact status cards ---- */
-    grid.textContent = '';
+        grid.textContent = '';
     list.forEach(function (s) {
       var card = el('div', 'status-card');
       card.setAttribute('role', 'listitem');
@@ -249,8 +221,7 @@
       grid.appendChild(card);
     });
 
-    /* ---- proportional distribution bar ---- */
-    if (bar) {
+        if (bar) {
       bar.textContent = '';
       list.forEach(function (s) {
         var seg = el('span', 'status-bar__seg');
@@ -260,8 +231,7 @@
       });
     }
 
-    /* ---- legend ---- */
-    if (legend) {
+        if (legend) {
       legend.textContent = '';
       list.forEach(function (s) {
         var li = el('li', 'status-legend__item');
@@ -278,8 +248,7 @@
     }
   }
 
-  /* --------------------------------------------------------- orders table */
-  var STATUS_LABELS = {
+    var STATUS_LABELS = {
     pending: 'Pending',
     confirmed: 'Confirmed',
     processing: 'Processing',
@@ -308,7 +277,7 @@
 
       tr.appendChild(el('td', 'orders-table__id', o.id));
 
-      // Customer + masked phone
+      
       var tdCust = el('td');
       tdCust.appendChild(el('span', 'orders-table__customer', o.customer));
       tdCust.appendChild(el('span', 'orders-table__phone', o.phone));
@@ -317,7 +286,7 @@
       tr.appendChild(el('td', 'orders-table__items', o.items));
       tr.appendChild(el('td', 'orders-table__amount', o.amount));
 
-      // Payment (architecture.md 7: payment state is independent of status)
+      
       var tdPay = el('td');
       tdPay.appendChild(el('span', 'pay-badge', o.payment));
       tr.appendChild(tdPay);
@@ -332,7 +301,7 @@
       var tdAct = el('td', 'orders-table__action');
       var btn = el('button', 'btn-view', 'View');
       btn.type = 'button';
-      // No order detail page exists yet, so this must not navigate anywhere.
+      
       btn.setAttribute('aria-disabled', 'true');
       btn.setAttribute('aria-label', 'View order ' + o.id);
       tdAct.appendChild(btn);
@@ -341,7 +310,6 @@
       body.appendChild(tr);
     });
   }
-/* ------------------------------------------------- top products + alerts */
   function renderProducts() {
     var list = $('#topProductsList');
     var empty = $('#productsEmpty');
@@ -362,9 +330,7 @@
 
       li.appendChild(el('span', 'product-row__rank', String(i + 1)));
 
-      /* Image falls back to a neutral tile so the row never collapses while
-         real product photography is still missing. */
-      var media = el('span', 'product-row__media');
+            var media = el('span', 'product-row__media');
       var img = el('img');
       img.src = p.image;
       img.alt = '';
@@ -378,7 +344,7 @@
       main.appendChild(el('span', 'product-row__name', p.name));
       main.appendChild(el('span', 'product-row__category', p.category));
 
-      // Proportion bar showing relative units sold
+      
       var bar = el('span', 'product-row__bar');
       var fill = el('span', 'product-row__fill');
       fill.style.width = maxUnits ? (p.units / maxUnits) * 100 + '%' : '0%';
@@ -437,8 +403,7 @@
     });
   }
 
-  /* ------------------------------------------------- responsive sidebar */
-  function initSidebar() {
+    function initSidebar() {
     var sidebar = $('#sidebar');
     var overlay = $('#sidebarOverlay');
     var toggle = $('#sidebarToggle');
@@ -464,7 +429,7 @@
       overlay.addEventListener('click', function () { setOpen(false); });
     }
 
-    // Escape closes the drawer (keyboard accessibility, rules.md 9).
+    
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && sidebar.classList.contains('is-open')) {
         setOpen(false);
@@ -473,8 +438,7 @@
     });
   }
 
-  /* ---------------------------------------------------------------- init */
-  function init() {
+    function init() {
     renderKpis();
     initRangeFilters();
     renderStatus();

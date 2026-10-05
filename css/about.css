@@ -1,19 +1,11 @@
-/* ==========================================================================
-   ABOUT PAGE
-   Loaded AFTER css/style.css + css/components.css, so the tokens, buttons,
-   header/footer, inner-page banner and breadcrumb are reused as-is. Only the
-   About-specific sections live here.
-   ========================================================================== */
 
-/* style.css styles .eyebrow for dark backgrounds — these sections are white */
+
 .about-story .eyebrow,
 .about-offer .eyebrow,
 .about-store .eyebrow{color:#717980}
 
-/* The header search is a link here (this page has no product list to filter) */
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
-/* Dark outline button for use on the light "What We Offer" cards */
 .btn-outline-dark{
   border-color:var(--border);
   color:var(--text);
@@ -21,9 +13,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 }
 .btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
 
-/* ==========================================================================
-   OUR STORY — two-column
-   ========================================================================== */
 .about-story{padding:70px 0}
 
 .about-story__grid{
@@ -63,9 +52,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
 
 .about-story__copy p:last-child{margin-bottom:0}
 
-/* ==========================================================================
-   WHAT WE OFFER — four feature cards
-   ========================================================================== */
 .about-offer{
   background:#fafbfc;
   padding:66px 0 72px;
@@ -130,9 +116,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   flex:1;
 }
 
-/* ==========================================================================
-   WHY SPEED BOOST — premium dark section
-   ========================================================================== */
 .about-why{
   background:#080d12;
   color:#fff;
@@ -204,10 +187,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   font-size:13.5px;
 }
 
-
-/* ==========================================================================
-   PHYSICAL STORE
-   ========================================================================== */
 .about-store{padding:70px 0}
 
 .about-store__grid{
@@ -296,9 +275,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   object-fit:cover;
 }
 
-/* ==========================================================================
-   CTA
-   ========================================================================== */
 .about-cta{
   background:#0e141b;
   color:#fff;
@@ -331,10 +307,6 @@ a.icon-btn{display:grid;place-items:center;text-decoration:none}
   flex-wrap:wrap;
 }
 
-/* ==========================================================================
-   RESPONSIVE
-   rules.md 8 — verified at 1440 / 1280 / 1024 / 768 / 640 / 390 / 375
-   ========================================================================== */
 @media(max-width:1024px){
   .about-story__grid,
   .about-store__grid{grid-template-columns:1fr;gap:28px}

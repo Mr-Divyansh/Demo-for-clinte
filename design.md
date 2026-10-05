@@ -1,4 +1,4 @@
-# Speed Boost Nutrition — Design System
+# D Web Studio — Design System
 
 ## 1. Design Goal
 

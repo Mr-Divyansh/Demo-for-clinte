@@ -1,6 +1,6 @@
-# Speed Boost Nutrition
+# D Web Studio
 
-A business-focused nutrition e-commerce website and order management system built for Speed Boost Nutrition.
+A business-focused nutrition e-commerce website and order management system built for D Web Studio.
 
 ## What This Project Solves
 
@@ -186,7 +186,7 @@ Built so far:
 - `index.html` — Home page
 - `shop.html` — Shop page (filters, price range, sorting, pagination, mobile filter drawer)
 - `categories.html` — Categories page (8 category cards, featured block, popular categories, deep links into Shop)
-- `about.html` — About page (hero, our story, 4 offer cards, dark "Why Speed Boost" section, physical store, CTA)
+- `about.html` — About page (hero, our story, 4 offer cards, dark "Why D Web Studio" section, physical store, CTA)
 - `contact.html` — Contact page (hero, 4 contact cards, demo contact form, store location, FAQ, CTA)
 - `css/style.css` — shared design system (tokens, header, cards, footer)
 - `css/components.css` — shared inner-page components (page banner, breadcrumb, dark trust strip, a11y helpers)

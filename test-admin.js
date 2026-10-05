@@ -67,7 +67,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     'Dashboard,Orders,Products,Customers,Sales,Notifications,Settings,Logout', nav.items.join(','));
   check('Dashboard is the active page',
     nav.active === 'Dashboard' && nav.current === 'page', JSON.stringify(nav.active));
-  check('sidebar shows the Speed Boost brand mark', nav.brand === 'SB', nav.brand);
+  check('sidebar shows the D Web Studio brand mark', nav.brand === 'DW', nav.brand);
   check('sidebar states the data is demo data', /demo/i.test(nav.foot), nav.foot);
 
   // ---- 3. Top header ----

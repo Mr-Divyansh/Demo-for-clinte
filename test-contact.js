@@ -121,8 +121,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('every info card has an icon', info.every(i => i.hasIcon));
   check('Visit Our Store shows Sonipat, Haryana',
     info[0].value === 'Sonipat, Haryana', info[0].value);
-  check('Instagram shows @speedboostnutrition',
-    info[3].value === '@speedboostnutrition', info[3].value);
+  check('Instagram shows @dwebstudio',
+    info[3].value === '@dwebstudio', info[3].value);
   check('Call Us and WhatsApp are marked pending',
     info[1].pending && info[2].pending, `call=${info[1].pending} whatsapp=${info[2].pending}`);
   check('verified cards are not marked pending',
@@ -286,13 +286,13 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
   check('uses the shared body font stack', /Inter|Arial|system-ui/i.test(identity.fontFamily), identity.fontFamily);
   check('reuses the shared .container width (1180px)', Math.round(identity.containerWidth) === 1180,
     `${Math.round(identity.containerWidth)}px`);
-  check('logo matches the other pages', identity.logoText === 'SB SPEED BOOST NUTRITION', identity.logoText);
+  check('logo matches the other pages', identity.logoText === 'DW D WEB STUDIO', identity.logoText);
   check('footer links match the other pages',
     identity.footerLinks === 'Home,Shop,Categories,About,Contact', identity.footerLinks);
   check('footer keeps Instagram, YouTube, Facebook',
     identity.footerSocials === 'Instagram,YouTube,Facebook', identity.footerSocials);
   check('copyright matches the other pages',
-    identity.copyright === String.fromCodePoint(0x00A9) + ' 2026 Speed Boost Nutrition. All rights reserved.',
+    identity.copyright === String.fromCodePoint(0x00A9) + ' 2026 D Web Studio. All rights reserved.',
     JSON.stringify(identity.copyright));
   check('header and footer both keep the site dark background',
     /rgba?\(7, 11, 15/.test(identity.headerBg) && /rgba?\(8, 13, 18/.test(identity.footerBg),

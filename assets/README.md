@@ -3,6 +3,27 @@
 All images are **replaceable local files**. Nothing on the site points at an
 external URL, so the demo keeps working offline.
 
+## Current state: placeholder art, not real photos
+
+Every `.jpg` in this folder is **generated placeholder artwork**, not real
+photography. Each one is deliberately abstract (brand gradient + a generic tub
+outline) and carries a small **"SAMPLE IMAGE"** caption, so it can never be
+mistaken for a real product photo or a real store.
+
+No product names are baked into the artwork — the cards already print the
+product/category name directly beneath each image, so a second copy inside the
+picture would just be clutter.
+
+This is intentional and follows `rules.md` 3 (never invent business data) and
+`rules.md` 15 (the demo must not pretend placeholder data is real). Real
+product photography was not available, so the site ships honest stand-ins that
+can be swapped for the real files with **no code change** — the paths below are
+already wired into the HTML and JS.
+
+**Replace these before launch.** Overwriting a file with the same name and the
+same aspect ratio is the entire migration step; the `onerror` fallbacks and the
+inline SVG placeholder in `js/shop.js` then simply stop triggering.
+
 ## Drop real photos here
 
 | File | Used by | Recommended size |
@@ -39,12 +60,16 @@ assets/products/zma.jpg
 assets/products/whey-isolate.jpg
 ```
 
-## Until the photos exist
+## If an image is ever missing
 
-Missing images are handled by a built-in fallback: each card shows a clean
-placeholder (a simple jar outline with the product name) and does **not** break
-the layout. The hero keeps its dark gradient background, so the banner stays
-readable without `shop-hero.jpg`.
+The files present right now are placeholders, but the site must also survive a
+genuinely **missing** file. That is handled by a built-in fallback: each card
+shows a clean placeholder (a simple jar outline with the product name) and does
+**not** break the layout. The hero keeps its dark gradient background, so the
+banner stays readable without `shop-hero.jpg`.
+
+So deleting any `.jpg` is safe — the layout degrades gracefully rather than
+showing a broken-image icon.
 
 Replace the placeholder artwork and sample product data with verified business
 photos and details before the site goes live (see `rules.md` section 3 —

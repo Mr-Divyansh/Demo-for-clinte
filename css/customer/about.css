@@ -1,7 +1,6 @@
 .about-story .eyebrow,
 .about-offer .eyebrow,
 .about-store .eyebrow{color:#717980}
-a.icon-btn{display:grid;place-items:center;text-decoration:none}
 .btn-outline-dark{
   border-color:var(--border);
   color:var(--text);

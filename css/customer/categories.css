@@ -1,7 +1,6 @@
 .cat-section .eyebrow,
 .cat-feature__copy .eyebrow,
 .cat-quick .eyebrow{color:#717980}
-a.icon-btn{display:grid;place-items:center;text-decoration:none}
 .cat-section{padding:56px 0 8px}
 .cat-grid{
   display:grid;

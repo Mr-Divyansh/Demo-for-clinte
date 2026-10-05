@@ -1,6 +1,9 @@
 Real product photography lives here (see ../README.md).
 
-Expected filenames — already wired up in js/shop.js:
+Expected filenames. These are **not** currently referenced by the code —
+the product catalogue in `js/data/products.js` points at verified Unsplash URLs.
+Overwrite these files, then point the `image` field at them when you switch
+to local photography:
   whey-protein.jpg
   creatine.jpg
   mass-gainer.jpg

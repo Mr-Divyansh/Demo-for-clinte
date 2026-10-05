@@ -219,7 +219,11 @@ Real photography and business data are not available yet, so these are clearly
 marked placeholders (see `rules.md` section 3 — Business Accuracy):
 
 - The eight **product counts** on the category cards.
-- All `assets/*.jpg` images — see `assets/README.md`. Every `<img>` hides itself
+- All imagery — the pages serve verified Unsplash URLs today, and the
+  `assets/*.jpg` files are an unwired, correctly-sized replacement pack. See
+  `assets/README.md`. Every `<img>` hides itself on error, so a failed image
+  never breaks the layout. Note the demo needs a network connection to render
+  its photography.
   on error, so a missing photo never breaks the layout.
 - Sample product names, prices, MRPs and brands in `js/data/products.js`.
 - Every number on `admin.html` — KPIs, the sales chart, order statuses, top

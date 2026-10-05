@@ -1,28 +1,29 @@
 # Images
 
-All images are **replaceable local files**. Nothing on the site points at an
-external URL, so the demo keeps working offline.
+## Current state: nothing in this folder is loaded
 
-## Current state: placeholder art, not real photos
+The pages serve **verified Unsplash URLs**, not these files. There are 49
+remote image references across the HTML and JS and **zero** references to
+`assets/`. These `.jpg` files ship as a ready-made, correctly-sized
+replacement pack rather than as anything the site currently requests.
 
-Every `.jpg` in this folder is **generated placeholder artwork**, not real
-photography. Each one is deliberately abstract (brand gradient + a generic tub
-outline) and carries a small **"SAMPLE IMAGE"** caption, so it can never be
-mistaken for a real product photo or a real store.
+They are still **generated placeholder artwork**, not real photography. Each
+is deliberately abstract (brand gradient + a generic tub outline) and carries
+a small **"SAMPLE IMAGE"** caption, so it can never be mistaken for a real
+product photo or a real store. No product names are baked in — the cards
+already print the name directly beneath each image. That follows `rules.md` 3
+(never invent business data) and `rules.md` 15 (the demo must not pretend
+placeholder data is real).
 
-No product names are baked into the artwork — the cards already print the
-product/category name directly beneath each image, so a second copy inside the
-picture would just be clutter.
+## Switching to local files
 
-This is intentional and follows `rules.md` 3 (never invent business data) and
-`rules.md` 15 (the demo must not pretend placeholder data is real). Real
-product photography was not available, so the site ships honest stand-ins that
-can be swapped for the real files with **no code change** — the paths below are
-already wired into the HTML and JS.
+Overwriting a file with the same name and aspect ratio is only half the job —
+you also have to point the markup at it. There are exactly two places:
 
-**Replace these before launch.** Overwriting a file with the same name and the
-same aspect ratio is the entire migration step; the `onerror` fallbacks and the
-inline SVG placeholder in `js/shop.js` then simply stop triggering.
+- Static images in the HTML: change the `src` on the matching `<img>`.
+- Product cards: change the `image` field in `js/data/products.js`.
+
+The `onerror` fallbacks then simply stop triggering.
 
 ## Drop real photos here
 
@@ -42,8 +43,8 @@ inline SVG placeholder in `js/shop.js` then simply stop triggering.
 
 ### Expected product image filenames
 
-These paths are already wired up in `js/shop.js` — just save the file with the
-same name and it appears automatically:
+These are the filenames `js/data/products.js` would use once each product's
+`image` field points at `assets/products/` instead of an Unsplash URL:
 
 ```text
 assets/products/whey-protein.jpg
@@ -68,7 +69,7 @@ shows a clean placeholder (a simple jar outline with the product name) and does
 **not** break the layout. The hero keeps its dark gradient background, so the
 banner stays readable without `shop-hero.jpg`.
 
-So deleting any `.jpg` is safe — the layout degrades gracefully rather than
+showing a broken-image icon.
 showing a broken-image icon.
 
 Replace the placeholder artwork and sample product data with verified business

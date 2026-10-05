@@ -163,6 +163,7 @@ Open shop.html        → Shop page
 Open categories.html  → Categories page
 Open about.html       → About page
 Open contact.html     → Contact page
+Open admin.html       → Admin dashboard (orders, products, sales, alerts)
 ```
 
 Smoke tests are included (dev-only, they drive the Chrome already installed on
@@ -170,16 +171,18 @@ the machine):
 
 ```bash
 npm install            # installs puppeteer-core (dev only)
-npm test               # all suites — 273 checks
+npm test               # all 6 suites — 394 checks
+npm run test:index     # index.html only — 34 checks
 npm run test:shop      # shop.html only — 65 checks
 npm run test:categories # categories.html only — 54 checks
 npm run test:about     # about.html only — 72 checks
 npm run test:contact   # contact.html only — 82 checks
+npm run test:admin     # admin.html only — 87 checks
 ```
 
 ## Status
 
-**Current stage:** Customer storefront — static demo
+**Current stage:** Customer storefront and admin dashboard — static demo
 
 Built so far:
 
@@ -188,17 +191,27 @@ Built so far:
 - `categories.html` — Categories page (8 category cards, featured block, popular categories, deep links into Shop)
 - `about.html` — About page (hero, our story, 4 offer cards, dark "Why D Web Studio" section, physical store, CTA)
 - `contact.html` — Contact page (hero, 4 contact cards, demo contact form, store location, FAQ, CTA)
-- `css/style.css` — shared design system (tokens, header, cards, footer)
-- `css/components.css` — shared inner-page components (page banner, breadcrumb, dark trust strip, a11y helpers)
-- `css/shop.css` — shop-only layout
-- `css/categories.css` — categories-only layout
-- `css/about.css` — about-only layout
-- `css/contact.css` — contact-only layout (including the first form styles on the site)
-- `js/shop.js` — sample catalogue + client-side filtering (no backend)
-- `js/contact.js` — contact form demo behaviour (validation only, sends nothing)
+- `admin.html` — Admin dashboard (sidebar, KPI row, sales chart, order status breakdown, attention panel, top products, filterable order table, mobile drawer)
+- `css/style.css` — shared design system: tokens, a11y helpers, header, cards, footer
+- `css/components.css` — shared inner-page components (page hero, breadcrumb, dark trust strip)
+- `css/customer/home.css` — home-only layout
+- `css/customer/shop.css` — shop-only layout
+- `css/customer/categories.css` — categories-only layout
+- `css/customer/about.css` — about-only layout
+- `css/customer/contact.css` — contact-only layout (including the only form styles on the site)
+- `css/admin/admin.css` — admin dashboard layout (sidebar, KPI cards, charts, order table)
+- `js/data/products.js` — the sample catalogue, shared by the home and shop pages
+- `js/customer/shop.js` — client-side filtering, sorting and pagination (no backend)
+- `js/customer/contact.js` — contact form demo behaviour (validation only, sends nothing)
+- `js/admin/admin-data.js` — hardcoded demo KPIs, orders, top products and alerts
+- `js/admin/admin.js` — dashboard rendering, order filtering and the mobile sidebar drawer
+- `tests/` — one Puppeteer suite per page, 394 checks in total
+- `docs/reference/` — the React admin mockup this static dashboard was built from (never built, never linked)
 - `assets/categories/README.md` — expected category image filenames and sizes
 
-Every page loads its stylesheets in the same order: `style.css` → `components.css` → the page-specific stylesheet. That shared order is what keeps the visual identity identical across pages.
+Every page loads its stylesheets in the same order: `css/style.css` → `css/components.css` → the page-specific stylesheet. That shared order is what keeps the visual identity identical across pages.
+
+`css/style.css` also owns the accessibility helpers (`.skip-link`, `.sr-only`, `:focus-visible`) and the shared design tokens — the elevation, radius and motion scales — so a page only needs its own stylesheet for layout that is genuinely unique to it.
 
 ### Placeholders to replace before launch
 
@@ -208,7 +221,9 @@ marked placeholders (see `rules.md` section 3 — Business Accuracy):
 - The eight **product counts** on the category cards.
 - All `assets/*.jpg` images — see `assets/README.md`. Every `<img>` hides itself
   on error, so a missing photo never breaks the layout.
-- Sample product names, prices, MRPs and brands in `js/shop.js`.
+- Sample product names, prices, MRPs and brands in `js/data/products.js`.
+- Every number on `admin.html` — KPIs, the sales chart, order statuses, top
+  products and alerts are hardcoded mock data in `js/admin/admin-data.js`.
 - The **"Get Directions"** link on `about.html` is `href="#"` until the exact
   verified store address / map URL is supplied.
 - On `contact.html`: the **Call Us** and **WhatsApp** values are placeholders
@@ -217,7 +232,13 @@ marked placeholders (see `rules.md` section 3 — Business Accuracy):
   has no backend, so submitting it shows an inline "not connected yet" notice
   instead of pretending to send a message.
 
+Every placeholder link pairs `href="#"` with `aria-disabled="true"`, so it is
+announced as unavailable rather than as a working link, and picks up
+`cursor:not-allowed` from `css/components.css`. Swap both attributes together
+when the real destination arrives.
+
 Next:
 
-**Cart → Checkout → Order flow, then the Admin Dashboard.**
+**Cart → Checkout → Order flow**, then wiring the admin dashboard to real data
+instead of the mock values in `js/admin/admin-data.js`.
 

@@ -1,4 +1,5 @@
 a.icon-btn{display:grid;place-items:center;text-decoration:none}
+[aria-disabled="true"]{cursor:not-allowed}
 .btn-outline-dark{
   border-color:var(--border);
   color:var(--text);

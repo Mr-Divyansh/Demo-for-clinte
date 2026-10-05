@@ -1,3 +1,4 @@
+html{overflow-x:hidden}
 .admin-body{
   background:var(--soft);
   color:var(--text);
@@ -654,6 +655,7 @@
 .status-legend__label{color:var(--text);font-weight:600}
 .status-legend__value{font-weight:900;color:var(--text)}
 .table-scroll{
+  position:relative;
   overflow-x:auto;
   max-width:100%;
 }
@@ -953,7 +955,7 @@
     width:100%;
     overflow-x:auto;
   }
-  .segmented__btn{flex:1 0 auto}
+  .segmented__btn{flex:1 0 auto;padding:7px 9px;font-size:12px}
   .panel__action{width:100%}
 }
 @media(max-width:420px){
